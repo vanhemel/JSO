@@ -4,6 +4,8 @@ var datum = new Date();
 var uur = datum.getHours();
 switch (uur) {
     case 9:
+    case 10:
+    case 11:
         console.log("Tussen 9 en 10 kan je eens naar koffie zien");
         break;
     case 12:
