@@ -10,3 +10,17 @@ for (var i = 2; i <= getal; i++) {
 }
 
 console.log(resultaat);
+
+//funtiedefinite/-declaratie: zelf een functie maken
+function faculteit(x){
+    var result=1;
+    for(var j=2;j<=x;j++){
+        result *=j;
+    }
+    return result;
+}
+
+//functie oproepen:
+resultaat=faculteit (getal);
+console.log(resultaat);
+console.log (faculteit(4));
