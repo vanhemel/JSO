@@ -6,7 +6,7 @@ var getal = parseInt(toetsenbord.question('Geef een getal:  '));
 
 for (var teller=1; teller <= getal; teller++){  
     var spatie =""; 
-    for (var tmp=1; tmp < teller; tmp++) {
+    for (var i=1; i < teller; i++) {
         spatie += " ";
        
     }
