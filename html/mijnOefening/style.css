@@ -13,3 +13,62 @@ p{
 .eerste em{
     text-decoration: underline
 }
+
+a{
+    text-decoration: none;
+}
+
+a:link{
+    color: greenyellow;
+}
+
+a:visited{
+    color: aqua;
+}
+
+a:hover{
+   color:black ;
+}
+
+a[href^="http://"]::after, 
+a[href^="https://"]::after {
+content: url(http://upload.wikimedia.org/wikipedia/commons/6/64/Icon_External_Link.png);
+margin: 0 0 0 5px;
+}
+a {
+    text-decoration: none;
+    }
+    a.button {
+    background-color: rgb(221,221,221);
+    padding: 1px 6px;
+    border-color: rgb(221,221,221);
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 1px;
+    color: #000;
+    font-size: 0.83333em;
+    text-align: center;
+    }
+    a.button:active{
+    border-style:inset;
+    }
+
+    p{
+        width:1000px;
+        padding:40px;
+        border: 5px solid rgb(2, 0, 128);
+        background-color: rgb(60, 255, 0);
+        margin: auto;
+        width: 800px;
+    } 
+    *{
+        box-sizing: border-box;
+    }
+
+    em{
+        padding: 0 50px;
+        background-color: deepskyblue;
+        }
+    span{
+        background-color: yellow;
+        }
