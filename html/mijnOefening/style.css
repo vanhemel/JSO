@@ -1,0 +1,15 @@
+p{
+    background-color: aquamarine;
+}  
+.eerste{
+    background-color: burlywood
+   
+}
+#tweede {
+    background:none;
+    color:#777;
+}
+
+.eerste em{
+    text-decoration: underline
+}
