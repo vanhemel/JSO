@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <title>CSS Selectors</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+       body{
+           width: 960px;
+       }
+       h1{
+            text-align: center;
+            margin:0px 0px 0px 0px;
+       }
+       div{
+           height:75px; 
+           width: 300px;
+           border: 1px black solid;
+           margin: 37.5px 9px 37.5px 9px;
+           text-align: center;
+           line-height: 37.5px;
+           vertical-align: middle;
+           float: left;
+       } 
+       .noBorder{
+           visibility:hidden ;
+       }
+       .lesgever::after{
+           content:"Ann";
+       }
+       .lesgever:hover::after{
+           content:"Jef";
+           }
+    </style>
+</head>
+
+<body>
+    <h1>Klasindeling</h1>
+    <div>PC112</div>
+    <div>PC111</div>
+    <div>PC110<br>Belkin</div>
+    <div>PC109<br>Wout</div>
+    <div>PC108<br>Tom</div>
+    <div>PC107<br>Erwin</div>
+    <div>PC106<br>Joris</div>
+    <div>PC105<br>Frederik</div>
+    <div>PC104<br>Chloé</div>
+    <div>PC103</div>
+    <div>PC102<br>Irina</div>
+    <div>PC101<br>Dmitryi</div>
+    <div class="noBorder">x</div>
+    <div class="lesgever">PC100<br>
+    </div>
+   
+</body>
+
+</html>
