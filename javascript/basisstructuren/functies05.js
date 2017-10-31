@@ -7,6 +7,7 @@ function f1(x){
     console.log("x in fie voor wijziging:",x);
     x++;
    console.log("x in fie na wijziging:",x);
+   //op het einde van de functie vergeet javascript dat x waarde 2 had (dus w blijft 1)
 }
 
 //(actueel) arg met andere naam dan (formele) param

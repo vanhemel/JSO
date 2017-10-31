@@ -10,22 +10,6 @@ for (var i = 2; i <= getal; i++) {
 }
 
 console.log(resultaat);
-<<<<<<< HEAD
-
-//funtiedefinite/-declaratie: zelf een functie maken
-function faculteit(x){
-    var result=1;
-    for(var j=2;j<=x;j++){
-        result *=j;
-    }
-    return result;
-}
-
-//functie oproepen:
-resultaat=faculteit (getal);
-console.log(resultaat);
-console.log (faculteit(4));
-=======
 */
 // om deze berekening leesbaarder te maken en 
 // toe te kunnen passen voor andere getallen, 
@@ -53,4 +37,3 @@ console.log(faculteit(10));
 if( faculteit(5) < 20){
     console.log("5! is kleiner dan 20");
 }
->>>>>>> 2b7e56baaa74898c895a8a7fd2cba044451847c7
