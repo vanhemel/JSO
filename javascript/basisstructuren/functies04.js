@@ -13,7 +13,6 @@ for (var i = 0; i < 5; i++) {
     console.log(getal);
 }
 
-/*
 function fieMetLokaleVar(){
     // een functie kan lokale var declareren, d.i.
     // var die enkel in de fie gekend zijn
@@ -28,9 +27,8 @@ function fieMetLokaleVar(){
 fieMetLokaleVar();
 // console.log(lokaal);  // fout bij uitvoering; 
 // want een lokale var is niet gekend buiten de fie
-*/
 
-/*
+
 function fieMetNieuweGlobaleVar(){
     // dit kan enkel zonder 'use strict'!
     // als in een fie een toekenning aan een niet-gedecl var
@@ -43,4 +41,3 @@ function fieMetNieuweGlobaleVar(){
 
 fieMetNieuweGlobaleVar();
 console.log(globaal);
-*/
