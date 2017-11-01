@@ -5,7 +5,7 @@ var toetsenbord = require('readline-sync');
 
 var loon = toetsenbord.question('Geef een het loon: ');
 var loonsVerhoging = toetsenbord.question('Geef de loonsverhoging: ');
-loon = +loon;
+loon = +loon; //de + maakt van de string een getal//
 loonsVerhoging = +loonsVerhoging;
 var nieuweLoon = loon+loonsVerhoging;
 
