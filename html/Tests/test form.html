@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Validatie</title>
+    <style>
+        
+        
+        input[pattern]:invalid {
+            background-color: rgb(252, 121, 121);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Sollicitatieformulier</h1>
+    <form action="sollicitatie.php"method="POST">
+        <p>
+            <label>Naam (verplicht):
+                <input type="text" required name="txtNaam" />
+            </label>
+        </p>
+        <p>
+            <label>Geboortedatum (niet verplicht)
+                <input name="datum" type="date" value="gebDatum" /> </label>
+            <p>Heb je een rijbewijs B?
+                <label>
+                    <input type="radio" name="rijbewijs" value="true" checked/>Ja</label>
+                <label>
+                    <input type="radio" name="rijbewijs" value="false" />Nee</label>
+            </p>
+            <p>Hoe goed is je Nederlands? (verplicht)
+                <label>
+                    <input type="radio" name="nederlands" value="goed" />Goed</label>
+                <label>
+                    <input type="radio" name="nederlands" value="middelmatig" checked/>Middelmatig</label>
+                <label>
+                    <input type="radio" name="nederlands" value="slecht" />Slecht</label>
+            </p>
+            <p>
+                <label>Geef een korte beschrijving van jezelf. (niet verplicht)
+                </br>
+                    <textarea></textarea  name="omschrijving"></label> 
+            </p>
+
+            <p>
+                <label>Postcode (4 cijfers, niet verplicht)
+                    <input type="text" pattern="\d{4}" name="postcode" />
+                </label>
+            </p>
+            <input type="submit" name="btn" value="Solliciteer nu!" />
+        </p>
+    </form>
+</body>
+
+</html>
