@@ -15,10 +15,10 @@ return result
 }
 
 var toetsenbord = require('readline-sync');
-var cel = parseFloat(toetsenbord.question('Geef de temperatuur in Celsius: '), 10);
+var cel = parseFloat(toetsenbord.question('Geef de temperatuur in Celsius: '));
 resultaat= celsius(cel);
 console.log('De temperatuur in Fahrenheit is : %s',resultaat);
 
-var far = parseFloat(toetsenbord.question('Geef de temperatuur in Fahrenheit: '), 10);
+var far = parseFloat(toetsenbord.question('Geef de temperatuur in Fahrenheit: '));
 resultaat= fahrenheit(far);
 console.log('De temperatuur in Celsius is: %s',resultaat);
