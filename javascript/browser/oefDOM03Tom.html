@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Elementen in form aanspreken</title>
+    <script type="text/javascript">
+        'use strict';
+        function naarBef() {
+            frm.waarde1.value = parseFloat(frm.waarde2.value) * 40.3399;
+        }
+
+        function naarEuro() {
+            frm.waarde2.value = parseFloat(frm.waarde1.value) / 40.3399;
+        }
+
+        function init() {
+            var btn1 = frm.btn1;
+            var btn2 = frm.btn2;
+            btn1.onclick = naarEuro;
+            btn2.onclick = naarBef;
+        }
+
+        window.onload = init;
+
+    </script>
+</head>
+
+<body>
+    <form name="frm">
+        <input type="text" name="waarde1" />
+        <input type="button" value="naar EURO =>" name="btn1" />
+        <input type="button" value="<=naar BEF" name="btn2" />
+        <input type="text" name="waarde2" />
+
+    </form>
+</body>
+
+</html>

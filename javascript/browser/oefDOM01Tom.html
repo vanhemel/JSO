@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Elementen in form aanspreken</title>
+    <script type="text/javascript">
+        'use strict';
+        function copyName() {
+            var tmp = frm.naamVeld1.value;
+            frm.naamVeld2.value = tmp;
+        }
+
+        function init() {
+            var btn = frm.btn;
+            btn.onclick = copyName;
+        }
+
+        window.onload = init;
+
+    </script>
+</head>
+
+<body>
+    <form name="frm">
+        Veld1:
+        <input type="text" name="naamVeld1" /> Veld2:
+        <input type="text" name="naamVeld2" />
+        <input type="button" value="klik" name="btn" />
+    </form>
+</body>
+
+</html>

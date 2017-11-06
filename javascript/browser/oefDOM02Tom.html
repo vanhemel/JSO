@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Elementen in form aanspreken</title>
+    <script type="text/javascript">
+        'use strict';
+        function somBerekenen() {
+            var getal1 = parseInt(frm.naamVeld1.value);
+            var getal2 = parseInt(frm.naamVeld2.value);        
+            var som = getal1 + getal2;
+            frm.naamVeld3.value = som
+        }
+
+        function init() {
+            var btn = frm.btn;
+            btn.onclick = somBerekenen;
+        }
+
+        window.onload = init;
+
+    </script>
+</head>
+
+<body>
+    <form name="frm">
+        <input type="text" name="naamVeld1" /> 
+        +<input type="text" name="naamVeld2" /> 
+        <input type="button" value="=" name="btn" />
+        Som:<input type="text" name="naamVeld3" />
+        
+    </form>
+</body>
+
+</html>
