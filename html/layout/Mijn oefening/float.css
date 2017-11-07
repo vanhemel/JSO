@@ -1,0 +1,23 @@
+.formcontainer{
+    width: 400px;
+}
+
+.formlabel, .forminput {
+    width: 50%;
+    box-sizing: border-box;
+    float:left;
+    margin-bottom: 5px; 
+}
+
+.form-radiogroup > label{
+    display: block;
+}
+
+.formlabel{
+    text-align:right;
+    padding-right: 5px;
+}
+
+.formbutton{
+    margin-left: 50%;
+}
