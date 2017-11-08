@@ -41,7 +41,7 @@ ul{
 
 li {
     height: 200px;
-    width: 300px;
+    width: 340px;
     border: 1px solid brown;
     background-clip: padding-box;
     border-radius: 10px;
@@ -49,4 +49,9 @@ li {
     margin: 10px;
 }
 
+img{
+    max-width: 300px;
+    height: auto;
+    padding:35px 0px;
+}
 
