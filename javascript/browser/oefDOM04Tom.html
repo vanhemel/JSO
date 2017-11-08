@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Elementen in form aanspreken</title>
+    <script type="text/javascript">
+        'use strict';
+        
+        function controle() {
+            var email = frm.email.value;
+            if (email.indexOf("@") == -1) {
+                alert("geen geldig e-mail adres");
+            }
+            else {
+                alert("geldig e-mail adres");
+            }
+        }
+
+        function init() {
+            var btn = frm.btn;
+            btn.addEventListener("click", controle);
+        }
+
+        window.onload = init;
+
+    </script>
+</head>
+
+<body>
+    <form name="frm">
+        <input type="text" name="email" />
+        <input type="button" value="Verzenden" name="btn" />
+    </form>
+</body>
+
+</html>

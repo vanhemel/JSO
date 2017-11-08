@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Elementen in form aanspreken</title>
+    <script type="text/javascript">
+        'use strict';
+        
+        function keerOm() {
+            var tekst1 = frm.tekst1.value;
+            var result="";
+            for(var teller=(tekst1.length); teller>=0;teller--){
+                var tmp= tekst1.charAt(teller)
+                result+= tmp;
+            }
+        frm.tekst2.value = result;
+        }
+        
+
+        function init() {
+            var btn = frm.btn;
+            btn.addEventListener("click", keerOm);
+        }
+
+        window.onload = init;
+
+    </script>
+</head>
+
+<body>
+    <form name="frm">
+        <input type="text" name="tekst1" />
+        <input type="text" name="tekst2" />
+        <input type="button" value="Draai om" name="btn" />
+    </form>
+</body>
+
+</html>

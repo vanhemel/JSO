@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Raad een getal tussen 0 en 100</title>
+    <script type="text/javascript">
+        'use strict';
+        var teRaden =Math.floor((Math.random()*100)+1);
+        var pogingen=0;
+
+        function controle() {
+            pogingen++
+            var getal = frm.getal.value;
+            if (getal > teRaden) {
+                alert("Te hoog");
+                return;
+            }
+            else if (getal < teRaden){
+                alert("Te laag");
+                return;
+            }
+            else{
+                frm.juist.value = "Juist! In "+pogingen+" pogingen";
+                var btn = frm.btn;
+                btn.disabled=true;
+            }
+        }
+
+        function init() {
+            var btn = frm.btn;
+            btn.addEventListener("click", controle);
+        }
+
+        window.onload = init;
+
+    </script>
+</head>
+
+<body>
+    <form name="frm">
+        <input type="text" name="getal" />
+        <input type="text" name="juist" />
+        <input type="button" value="Speel" name="btn" />
+    </form>
+</body>
+
+</html>

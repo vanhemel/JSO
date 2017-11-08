@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Oefening DOM 6</title>
+<script>
+var getal1, getal2;
+
+
+    function declareer(){
+        getal1=parseInt(frmTekst.txtGetal1.value);
+        getal2=parseInt(frmTekst.txtGetal2.value);
+    }
+
+   function telOp(){
+     frmTekst.txtResultaat.value = getal1+getal2;
+   }
+   function berekenVerschil(){
+     frmTekst.txtResultaat.value = getal1-getal2;
+                                   
+   }
+   function deel(){
+     frmTekst.txtResultaat.value = getal1/getal2
+   }
+   function vermenigvuldig(){
+     frmTekst.txtResultaat.value = getal1*getal2
+   }
+   function init(){
+     document.getElementById("btnPlus").onclick = telOp;
+     document.getElementById("btnMin").onclick = berekenVerschil;
+     document.getElementById("btnMaal").onclick = vermenigvuldig;
+     document.getElementById("btnDeel").onclick = deel;
+   }
+   window.onload = init;
+</script>
+</head>
+<body>
+<form name="frmTekst">
+<input type="number" name="txtGetal1" /><br />
+<input type="button" value="+" id="btnPlus" /><br />
+<input type="button" value="-" id="btnMin" /><br />
+<input type="button" value="/" id="btnDeel"><br />
+<input type="button" value="X" id="btnMaal" /><br />
+<input type="number" name="txtGetal2" /><br />
+= <br/>
+<input type="number" name="txtResultaat" readonly/><br />
+</form>
+</body>
+</html>
