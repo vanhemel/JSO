@@ -86,5 +86,9 @@ img{
     background-color: rgba(161, 157, 95, 0.774);
     border-radius: 10px;
     padding:20px;
-
+    margin:50px;
+}
+.wrapper{
+    display:flex;
+    margin:0px 130px;
 }

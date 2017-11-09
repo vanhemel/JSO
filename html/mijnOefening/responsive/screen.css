@@ -2,8 +2,7 @@
     display: grid;
     grid-template-areas: "header header"
                          "aside main";
-    grid-template-columns: 150px 1fr;
-    grid-template-rows: 100px 1fr;
+    grid-template-columns: 15% 1fr;
     min-height: 100vh;
 }
 
@@ -69,7 +68,7 @@ nav>a{
     max-width: 600px;
     }
     .navigation > nav, .navigation .ads{
-    width: 50%;
+        width: 50%;
     /*float: left;*/
     }
 }
@@ -87,10 +86,13 @@ nav>a{
     }
     .navigation> nav, .navigation >ads,
     .navigation > nav> a, .navigation> .ads > .ad {
-    width: 100%;
+        width: 100%;
     }
     .ads > figure, nav>a{
-    text-align: left;
+    text-align: left;}
+  .ad{
+        display:none;
+        width: 50%;
     }
     }
         

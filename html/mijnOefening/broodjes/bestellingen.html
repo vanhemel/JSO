@@ -8,7 +8,7 @@
     <link href="./style.css" type="text/css" rel="stylesheet">
 </head>
 
-<body class="border">
+<body>
     <header class="page-header general">
         Retro Broodjes
     </header>
@@ -24,57 +24,57 @@
                 </li>
             </ul>
         </nav>
-
-        <form action="" method="POST">
-            <div>
-                <p class="verticaal tabel">Broodje:
-                    <br/>
-                    <label>
-                        <input type="checkbox" name="gezond" />Gezond (2,10 €)</label>
-                    <label>
-                        <input type="checkbox" name="samoerai" />Samoerai (2,30 €)</label>
-                    <label>
-                        <input type="checkbox" name="pickeltje" />Pickeltje (2,30 €)</label>
-                    <label>
-                        <input type="checkbox" name="sweetbr" />Sweet Brie (3,10 €)</label>
-                    <label>
-                        <input type="checkbox" name="torentino" />Torentino (2,80 €)</label>
-                    <label>
-                        <input type="checkbox" name="pastrami" />Pastrami (3,00 €)</label>
-                </p>
-                <p class="tabel">
-                    <label>
-                        <input type="radio" name="type" checked/>Wit</label>
-                    <label>
-                        <input type="radio" name="type" />Bruin</label>
+        <div class="wrapper">
+            <form action="" method="POST">
+                    <p class="verticaal tabel">Broodje:
+                        <br/>
                         <label>
-                                <input type="checkbox" name="smos" />Smos</label>
+                            <input type="checkbox" name="gezond" />Gezond (2,10 €)</label>
+                        <label>
+                            <input type="checkbox" name="samoerai" />Samoerai (2,30 €)</label>
+                        <label>
+                            <input type="checkbox" name="pickeltje" />Pickeltje (2,30 €)</label>
+                        <label>
+                            <input type="checkbox" name="sweetbr" />Sweet Brie (3,10 €)</label>
+                        <label>
+                            <input type="checkbox" name="torentino" />Torentino (2,80 €)</label>
+                        <label>
+                            <input type="checkbox" name="pastrami" />Pastrami (3,00 €)</label>
+                    </p>
+                    <p class="tabel">
+                        <label>
+                            <input type="radio" name="type" checked/>Wit</label>
+                        <label>
+                            <input type="radio" name="type" />Bruin</label>
+                        <label>
+                            <input type="checkbox" name="smos" />Smos</label>
+                    </p>
+                <p>
+                    <input type="submit" name="btnK" value="Bestellen" />
                 </p>
-            </div>
-            <p>
-                <input type="submit" name="btnK" value="Bestellen" />
-            </p>
 
-        </form>
+            </form>
 
+            <table class="tabel verticaal">
+                <tr>
+                    <th>Broodje</th>
+                    <th>Prijs</th>
+                </tr>
 
-        <table class="tabel">Bestelling
-            <tr>
-                <th>Broodje</th>
-                <th>Prijs</th>
-            <td>
-            <tr>
-                <td>Gezond</td>
-                <td>2,10</td>
-            <tr>
-                <td>Pickeltje</td>
-                <td>2,30</td>
-            <td>
-            <tr>
-                <td>Pastrami</td>
-                <td>3,00</td>
-            <td>
-        </table>
+                <tr>
+                    <td>Gezond</td>
+                    <td>2,10</td>
+                </tr>
+                <tr>
+                    <td>Pickeltje</td>
+                    <td>2,30</td>
+                </tr>
+                <tr>
+                    <td>Pastrami</td>
+                    <td>3,00</td>
+                </tr>
+            </table>
+        </div>
     </main>
     <aside class="specials general">
         Broodje van de dag:
