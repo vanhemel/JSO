@@ -54,3 +54,4 @@ k3.push("Karen");
 k3.push("Kristel");
 k3.push("Kathleen");
 console.log(k3);
+k3[2]="josje";
