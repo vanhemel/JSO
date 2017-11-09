@@ -1,0 +1,96 @@
+.grid{
+    display: grid;
+    grid-template-areas: "header header"
+                         "aside main";
+    grid-template-columns: 150px 1fr;
+    grid-template-rows: 100px 1fr;
+    min-height: 100vh;
+}
+
+.grid_header { grid-area: header; }
+.grid_aside { grid-area: aside; }
+.grid_main { grid-area: main; }
+
+.container{
+    max-width:240px;
+    margin:0 auto;
+    }
+figure{
+    margin: 1em 0px;
+    }
+.main{
+   /*overflow: hidden;*/
+   display: flex;
+    }
+#logo{
+    width: 50%;
+    /*float: left;*/
+    background-color: #888;
+    color:#EEE;
+    text-align: center;
+    font-size: 1.2em;
+    }
+.social{
+    width: 50%;
+    /*float: left;*/
+    font-size: 1.2em;
+    margin: 0.67em 0;
+    
+    }
+.icon{
+    /*float: right;*/
+    margin: 0 5px;
+    }
+nav>a{
+    text-decoration: none;
+    /*float: left;*/
+    width: 25%;
+    text-align: center;
+    color: #333; 
+    }
+.iconT, .iconF{
+    Justify-content: flex-end;
+}
+.ads>figure{
+    width: 50%;
+    /*float: left;*/
+    text-align: center;
+    }
+.masthead > figure >img{
+    max-width:100%;
+    height:auto;
+    }
+.masthead > figure{
+    text-align: center;
+    width:100%;
+    }
+@media screen and (min-width:600px){
+    .container{
+    max-width: 600px;
+    }
+    .navigation > nav, .navigation .ads{
+    width: 50%;
+    /*float: left;*/
+    }
+}
+@media screen and (min-width:960px){
+    .container{
+    max-width: 1024px;
+    }
+    .navigation{
+    /*float: left;*/
+    width: 15%;
+    }
+    .content{
+    /*float: left;*/
+    width: 85%;
+    }
+    .navigation> nav, .navigation >ads,
+    .navigation > nav> a, .navigation> .ads > .ad {
+    width: 100%;
+    }
+    .ads > figure, nav>a{
+    text-align: left;
+    }
+    }
+        

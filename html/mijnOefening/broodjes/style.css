@@ -65,15 +65,23 @@ ul{
     margin: 10px;
     font-size: 20px;
 }
-
 img{
     max-width: 300px;
     height: auto;
     padding:35px 0px;
 }
+.verticaal{
+    display:flex;
+    flex-direction: column;
+    text-align: left;
+}
 
+.horizontaal{
+    display:flex;
+    flex-direction: row;
+    text-align: left;
+}
 .tabel{
-    width:100%; 
     border: 1px solid brown;
     background-color: rgba(161, 157, 95, 0.774);
     border-radius: 10px;
