@@ -7,20 +7,11 @@ var naam;
 
 naam = toetsenbord.question('Geef een naam:  ');
 
-while (naam != '') {
-    namenlijst.push(naam);
-    minimum++;
 
+while((naam != '') || (minimum < 10)){
 
-}  
-
-
-
-//If((naam != '') && (minimum < 10))
-
-/*while (minimum < 10) { 
     
-    while (naam != '') {
+    if (naam != '') {
         
         namenlijst.push(naam);
         minimum++;
