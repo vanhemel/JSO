@@ -12,20 +12,23 @@ var getal1, getal2;
     }
 
    function telOp(){
+    declareer();
      frmTekst.txtResultaat.value = getal1+getal2;
    }
    function berekenVerschil(){
+    declareer();
      frmTekst.txtResultaat.value = getal1-getal2;
                                    
    }
    function deel(){
+    declareer();
      frmTekst.txtResultaat.value = getal1/getal2
    }
    function vermenigvuldig(){
+    declareer();
      frmTekst.txtResultaat.value = getal1*getal2
    }
    function init(){
-      declareer;
      document.getElementById("btnPlus").onclick =telOp;
      document.getElementById("btnMin").onclick = berekenVerschil;
      document.getElementById("btnMaal").onclick = vermenigvuldig;
