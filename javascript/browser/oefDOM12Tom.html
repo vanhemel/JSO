@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Oefening DOM 12</title>
+    <script>
+        function kopieer() {
+            var idx = frm.bewerking.selectedIndex;
+            if (frm.bew[0].checked) {
+                frm.bewerking.value="k1";
+            }
+            else{
+                frm.bewerking.value="k2";
+            }
+        }
+        
+        function init() {
+            document.getElementById("resultaat").onclick = kopieer;
+        }
+        window.onload = init;
+    </script>
+</head>
+
+<body>
+    <form name="frm">
+        <label>
+            <input type="radio" name="bew" value="k1" checked/>keuze1</label>
+        <br/>
+        <label>
+            <input type="radio" name="bew" value="k2" />keuze2</label>
+        <br/>
+
+        <input type="button" value="=" id="resultaat" />
+        <br />
+        <select name="bewerking">
+            <option value="k1" selected>keuze1</option>
+            <option value="k2">keuze2</option>
+        </select>
+    </form>
+</body>
+
+</html>

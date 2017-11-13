@@ -26,29 +26,25 @@
         </nav>
         <div class="wrapper">
             <form action="" method="POST">
-                    <p class="verticaal tabel">Broodje:
-                        <br/>
-                        <label>
-                            <input type="checkbox" name="gezond" />Gezond (2,10 €)</label>
-                        <label>
-                            <input type="checkbox" name="samoerai" />Samoerai (2,30 €)</label>
-                        <label>
-                            <input type="checkbox" name="pickeltje" />Pickeltje (2,30 €)</label>
-                        <label>
-                            <input type="checkbox" name="sweetbr" />Sweet Brie (3,10 €)</label>
-                        <label>
-                            <input type="checkbox" name="torentino" />Torentino (2,80 €)</label>
-                        <label>
-                            <input type="checkbox" name="pastrami" />Pastrami (3,00 €)</label>
-                    </p>
-                    <p class="tabel">
-                        <label>
-                            <input type="radio" name="type" checked/>Wit</label>
-                        <label>
-                            <input type="radio" name="type" />Bruin</label>
-                        <label>
-                            <input type="checkbox" name="smos" />Smos</label>
-                    </p>
+                <p class="verticaal tabel">Broodje:
+                    <br/>
+                    <select name="bewerking">
+                        <option value="keuze" selected>Gezond (2,10 €)</option>
+                        <option value="plus">Samoerai (2,30 €)</option>
+                        <option value="min">Pickeltje (2,30 €)</option>
+                        <option value="deel">Sweet Brie (3,10 €)</option>
+                        <option value="maal">Torentino (2,80 €)</option>
+                        <option value="maal">Pastrami (3,00 €)</option>
+                    </select>
+                </p>
+                <p class="tabel">
+                    <label>
+                        <input type="radio" name="type" checked/>Wit</label>
+                    <label>
+                        <input type="radio" name="type" />Bruin</label>
+                    <label>
+                        <input type="checkbox" name="smos" />Smos</label>
+                </p>
                 <p>
                     <input type="submit" name="btnK" value="Bestellen" />
                 </p>
@@ -73,6 +69,11 @@
                     <td>Pastrami</td>
                     <td>3,00</td>
                 </tr>
+                <tr>
+                    <td><strong>Totaal</strong></td>
+                    <td>3,00</td>
+                </tr>
+
             </table>
         </div>
     </main>

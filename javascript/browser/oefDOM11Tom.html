@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Oefening DOM 11</title>
+    <script>
+        function Bereken() {
+            var idx = frm.bewerking.selectedIndex;
+
+            if (idx == 0) {
+                alert("maak een keuze")
+            } else if (idx == 1) {
+                telOp();
+            } else if (idx == 2) {
+                berekenVerschil();
+            } else if (idx == 3) {
+                deel();
+            } else if (idx == 4) {
+                vermenigvuldig();
+            }
+        }
+        function telOp() {
+            frm.txtResultaat.value = parseInt(frm.txtGetal1.value) +
+                parseInt(frm.txtGetal2.value)
+        }
+        function berekenVerschil() {
+            frm.txtResultaat.value = parseInt(frm.txtGetal1.value) -
+                parseInt(frm.txtGetal2.value)
+        }
+        function deel() {
+            frm.txtResultaat.value = parseInt(frm.txtGetal1.value) /
+                parseInt(frm.txtGetal2.value)
+        }
+        function vermenigvuldig() {
+            frm.txtResultaat.value = parseInt(frm.txtGetal1.value) *
+                parseInt(frm.txtGetal2.value)
+        }
+        function init() {
+            document.getElementById("resultaat").onclick = Bereken;
+        }
+        window.onload = init;
+    </script>
+</head>
+
+<body>
+    <form name="frm">
+        <input type="number" name="txtGetal1" />
+        <br />
+        <select name="bewerking">
+            <option value="keuze" selected>maak uw keuze</option>
+            <option value="plus">optelling</option>
+            <option value="min">aftrekking</option>
+            <option value="deel">deling</option>
+            <option value="maal">vermenigvuldiging</option>
+        </select>
+        <br/>
+        <input type="number" name="txtGetal2" />
+        <input type="button" value="=" id="resultaat" />
+        <br />
+        <input type="number" name="txtResultaat" readonly/>
+        <br />
+    </form>
+</body>
+
+</html>
