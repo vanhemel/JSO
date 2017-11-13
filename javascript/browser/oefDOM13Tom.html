@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Select en option</title>
+    <script type="text/javascript">
+
+        function voegNaamToe() {
+            var naam = frm.naamVeld.value;
+            var nieuweOption = document.createElement('option');
+            nieuweOption.value = naam;
+            nieuweOption.text = naam;
+            frm.namen1.add(nieuweOption);
+        }
+
+        function naarRechts() {
+            var indx = frm.namen1.selectedIndex;
+            var optie = frm.namen1.options[indx];
+            var nieuweOption = document.createElement('option');
+            nieuweOption.value = optie.value;
+            nieuweOption.text = optie.text;
+            frm.namen2.add(nieuweOption);
+            frm.namen1.remove(indx);
+        }
+
+        function naarLinks() {
+            var indx = frm.namen2.selectedIndex;
+            var optie = frm.namen2.options[indx];
+            var nieuweOption = document.createElement('option');
+            nieuweOption.value = optie.value;
+            nieuweOption.text = optie.text;
+            frm.namen1.add(nieuweOption);
+            frm.namen2.remove(indx);
+        }
+
+        function init() {
+            frm.btn1.onclick = voegNaamToe;
+            frm.btn2.onclick = naarRechts;
+            frm.btn3.onclick = naarLinks;
+        }
+
+        window.onload = init;
+    </script>
+</head>
+
+<body>
+    <form name="frm">
+        Naam:
+        <input type="text" name="naamVeld" />
+        <input type="button" value="Toevoegen" name="btn1" />
+        <br/>
+        <select name="namen1" size="5" style="width:100px">
+        </select>
+        <input type="button" value=">" name="btn2" />
+        <input type="button" value="<" name="btn3" />
+        <select name="namen2" size="5" style="width:100px">
+        </select>
+    </form>
+</body>
+
+</html>
