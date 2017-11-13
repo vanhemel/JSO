@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Wedstrijd</title>
+    <script type="text/javascript">
+        'use strict';
+        var positieS = 0;
+        var positieH = 0;
+        var posS = 0;
+        var posH = 0;
+
+        function positieHbep() {
+            var kans = Math.floor((Math.random() * 100) + 1);
+            switch (true) {
+                case kans <= 20:
+                    positieH = 0;
+                    break;
+                case kans > 20 && kans <= 40:
+                    positieH = 9;
+                    break;
+                case kans > 40 && kans <= 50:
+                    positieH = -12;
+                    break;
+                case kans > 50 && kans <= 80:
+                    positieH = 1;
+                    break;
+                case kans > 80 && kans <= 100:
+                    positieH = -2
+                    break;
+            }
+            return positieH
+        }
+
+        function positieSbep() {
+            var positieS = 0;
+            var kans = Math.floor((Math.random() * 100) + 1);
+            switch (true) {
+                case kans <= 50:
+                    positieS = 3;
+                    break;
+                case kans > 50 && kans <= 80:
+                    positieS = 1;
+                    break;
+                case kans > 80 && kans <= 100:
+                    positieS = -6;
+                    break;
+            }
+            return positieS
+        }
+        function afdruk() {
+            while (posS < 69 && posH < 69) {
+                var parcour = new Array(70);
+                parcour.fill(">");
+                posS += positieSbep();
+                posH += positieHbep();
+                parcour[posS] = 'S';
+                parcour[posH] = 'H';
+                document.write(parcour);
+                document.write("<br/>");
+            }
+            if (parcour[(parcour.length)-1]=='S') {
+                document.write("De schildpad wint!");    
+            } else {
+                document.write("De haas wint!");    
+            }
+        }
+
+        function init() {
+            var btn = frm.btn;
+            btn.addEventListener("click", afdruk);
+        }
+        window.onload = init;
+    </script>
+</head>
+
+<body>
+    <form name="frm">
+        <input type="button" value="START" name="btn" />
+    </form>
+</body>
+
+</html>

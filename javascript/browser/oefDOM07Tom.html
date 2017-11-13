@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sorteer namen</title>
+    <script type="text/javascript">
+        'use strict';
+        
+        function sorteer() {
+            var lijst=new Array(5); 
+            for (var i=0;i<lijst.length;i++){
+                lijst[i]=document.getElementById("naam"+(i+1)).value;
+             } 
+             lijst.sort();
+             for (var i=0;i<lijst.length;i++){
+                document.getElementById("naam"+(i+1)).value=lijst[i];
+             } 
+        }
+
+        function init() {
+            var btn = frm.btn;
+            btn.addEventListener("click", sorteer);
+        }
+
+        window.onload = init;
+
+    </script>
+</head>
+
+<body>
+    <form name="frm">
+        <input type="text" id="naam1"/>
+        <input type="text" id="naam2"/>
+        <input type="text" id="naam3"/>
+        <input type="text" id="naam4"/>
+        <input type="text" id="naam5"/>
+        <input type="button" value="sorteer" name="btn" />
+    </form>
+</body>
+
+</html>

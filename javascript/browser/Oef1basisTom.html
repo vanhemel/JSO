@@ -5,13 +5,17 @@
     <script>
         'use strict';
         function init() {
-            alert("Alarm");
+            var btn = frm.btn;
+            btn.addEventListener("click", controle);
         }
         window.onload = init;
     </script>
 </head>
 
 <body>
+    <form name="frm">
+        <input type="button" value="Speel" name="btn" />
+    </form>
 </body>
 
 </html>
