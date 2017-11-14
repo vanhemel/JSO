@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>aanvinken</title>
+    <script>
+        function wijzigGrootte() {
+            var indx = form.grootte.selectedIndex;
+            switch (true) {
+                case indx == 0:
+                document.getElementById("tekst").style.fontSize="xx-small";
+                    break;
+                case indx == 1:
+                document.getElementById("tekst").style.fontSize="x-small";
+                    break;
+                case indx == 2:
+                document.getElementById("tekst").style.fontSize="small";
+                    break;
+                case indx == 3:
+                document.getElementById("tekst").style.fontSize="medium";
+                    break;
+                case indx == 4:
+                document.getElementById("tekst").style.fontSize="large";
+                    break;
+                case indx == 5:
+                document.getElementById("tekst").style.fontSize="x-large";
+                    break;
+                case indx == 6:
+                document.getElementById("tekst").style.fontSize="xx-large";
+                    break;
+            }
+        }
+
+        function init() {
+            var btn = document.getElementById("btn");
+            btn.onclick = wijzigGrootte;
+        }
+        window.onload = init;
+    </script>
+</head>
+
+<body>
+    <form id="form">
+
+        <select name="grootte">
+            <option name="xxS" value="xxS" id="xxS">xx-small</option>
+            <option name="xS" value="xS" id="xS">x-small</option>
+            <option name="S" value="S" id="S">small</option>
+            <option name="M" value="M" id="M">medium</option>
+            <option name="L" value="L" id="L">large</option>
+            <option name="xL" value="xL" id="xL">x-large</option>
+            <option name="xxL" value="xxL" id="xxL">xx-large</option>
+        </select>
+        <input type="button" value="Wijzig grootte" id="btn" />
+        <br/>
+        <Span id="tekst">Change me!</span>
+
+    </form>
+</body>
+
+</html>
