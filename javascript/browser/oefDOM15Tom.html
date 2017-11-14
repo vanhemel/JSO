@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Foutboodschappen</title>
+    <style type="text/css">
+        .verborgen {
+            display: none;
+        }
+
+        .getoond {
+            color: red;
+            visibility: visible;
+        }
+    </style>
+    <script>
+        function controleerAlles() {
+            var errorLabel = document.getElementById("errorLabel1");
+            if (controleerInput() && controleerLeeftijd()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function controleerInput() {
+            var errorLabel1 = document.getElementById("errorLabel1");
+            if (form1.q.value != "") {
+                errorLabel1.className = "verborgen";
+                return true;
+            } else {
+                errorLabel1.className = "getoond";
+                return false;
+            }
+        }
+
+        function controleerLeeftijd() {
+            var errorLabel2 = document.getElementById("errorLabel2");
+            var errorLabel3 = document.getElementById("errorLabel3");
+            var errorLabel4 = document.getElementById("errorLabel4");
+            if (form1.leeftijd.value == "") {
+                errorLabel2.className = "getoond";
+                errorLabel3.className = "verborgen";
+                errorLabel4.className = "verborgen";
+                return false;
+            } else if (isNaN(form1.leeftijd.value)) {
+                errorLabel2.className = "verborgen";
+                errorLabel3.className = "getoond";
+                errorLabel4.className = "verborgen";
+
+                return false;
+            } else if (form1.leeftijd.value < 18) {
+                errorLabel2.className = "verborgen";
+                errorLabel3.className = "verborgen";
+                errorLabel4.className = "getoond";
+                return false;
+            } else {
+                errorLabel2.className = "verborgen";
+                errorLabel3.className = "verborgen";
+                errorLabel4.className = "verborgen";
+                return true;
+            }
+        }
+
+
+
+        function init() {
+            form1.onsubmit = controleerAlles;
+        }
+
+        window.onload = init;
+    </script>
+</head>
+
+<body>
+    <form id="form1" action="http://www.google.be/search" method="get">
+        zoekterm:
+        <input type="text" name="q" />
+        <span id="errorLabel1" class="verborgen">Zoekterm moet worden ingevuld</span>
+        <br /> Leeftijd:
+        <input type="text" name="leeftijd" />
+        <span id="errorLabel2" class="verborgen">Vul uw leeftijd in</span>
+        <span id="errorLabel3" class="verborgen">Vul een getal in</span>
+        <span id="errorLabel4" class="verborgen">U bent te jong</span>
+        <br />
+        <input type="submit" name="knop" value="klikken" />
+    </form>
+</body>
+
+</html>
