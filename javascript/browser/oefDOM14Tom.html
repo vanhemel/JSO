@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>aanvinken</title>
+<script>
+function aanvinken(){
+	var form = document.forms[0];
+	for (var i=0;i<form.elements.length;i++){
+		if (form.elements[i].type=="checkbox") {
+            form.elements[i].checked=true;
+        } 
+	}
+
+}
+function init(){
+	var btn = document.getElementById("btn");
+	btn.onclick = aanvinken;
+}
+window.onload = init;
+</script>
+</head>
+<body>
+<form id="form">
+Naam: <input type="text" name="naamVeld" /><br/>
+<input type="button" value="aanvinken" id="btn" /><br/>
+<label>keuze1<input type="checkbox" name="box1" /></label><br/>
+<input type="text" name="txtTekst2" /></br/>
+<label>keuze2<input type="checkbox" name="box2" /></label><br/>
+<label>keuze3<input type="checkbox" name="box3" /></label><br/>
+
+</form>
+</body>
+</html>
