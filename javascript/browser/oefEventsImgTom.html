@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Events 3</title>
+  <style>
+	body { margin: 20px; }
+	img { margin: 20px; }
+  </style>
+  <script>
+	function showAnswer(e) {
+		var image = e.target;
+		var name = image.id;
+		name = "images/" + name + ".jpg";
+		image.src = name;
+    }
+    function showStart(e) {
+		var image = e.target;
+		var name = image.id;
+		name = "images/" + name +"blur"+".jpg";
+		image.src = name;
+    }
+
+    function init() {
+		var images = document.getElementsByTagName("img");
+		for (var i = 0; i < images.length; i++) {
+			images[i].onmouseover = showAnswer;
+			images[i].onmouseout = showStart;
+		}
+	}
+    window.onload = init;
+  </script>
+</head>
+<body>
+<h1>Raad wie of wat op onderstaande figuren staat.  Klik op een figuur om je antwoord te controleren.</h1>
+<img id="zero" src="images/zeroblur.jpg">
+	<img id="one" src="images/oneblur.jpg">
+	<img id="two" src="images/twoblur.jpg">
+	<img id="three" src="images/threeblur.jpg">
+	<img id="four" src="images/fourblur.jpg">
+<img id="five" src="images/fiveblur.jpg">
+</body>
+</html>

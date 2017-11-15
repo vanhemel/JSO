@@ -1,0 +1,18 @@
+#parent{
+    background-color: darkgrey;
+    width:800px;
+    height: 600px;
+    display:flex;
+    padding: 0;
+    /*flex-direction: row;
+    flex-wrap: wrap;*/
+    flex-flow: row wrap;
+}
+
+.child{
+    background-color:darkolivegreen;
+    width:100px;
+    height: 100px;
+    margin:5px;
+    display: inline-block;
+}

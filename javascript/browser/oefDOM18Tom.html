@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>DOM18</title>
+    <script>
+        var temp='false';
+
+        function volgen(e) {
+            if (starten){
+            var x = e.pageX;
+            var y = e.pageY;
+            var tekst = document.getElementById("tekst");
+            tekst.style.left = x + "px";
+            tekst.style.top = y + "px";}
+
+            
+
+        }
+
+        function starten() {
+            temp = "true";
+        }
+        function stoppen() {
+            temp = "true";
+        }
+
+        function init() {
+            document.addEventListener("mousemove", volgen);
+            document.addEventListener("dblclick", stoppen);
+            document.onclick = starten;
+            document.ondblclick = stoppen;
+        }
+        window.onload = init;
+    </script>
+</head>
+
+<body>
+    <span id="tekst" style="position: absolute">I will follow!</span>
+</body>
+
+</html>
