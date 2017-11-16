@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Events 5</title>
+    <style>
+        body {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    <script>
+
+        var date = new Date();
+        function display(text) {
+            var messagePara = document.getElementById("message");
+            messagePara.innerHTML = text;
+        }
+
+        var weekdagen = ["Maandag","Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag","Zondag"]
+        function clock() {
+            var datum = new Date();
+            var datumLocal= datum.toLocaleString();
+            var dagNummer= datum.getDay()-1;
+            var dag= weekdagen[dagNummer];
+            display(dag +" "+ datumLocal);
+        }
+
+        function init() {
+            setInterval(clock, 1000);
+        }
+        window.onload = init;
+    </script>
+</head>
+
+<body>
+    <p id="message" style="text-align:center; font-size:80px;"></p>
+</body>
+
+</html>

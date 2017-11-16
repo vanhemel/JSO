@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Quiz</title>
+    <script>
+        //btn.disabled = true;
+        function controle() {
+            if(frm.prov[3].checked){
+                alert("Je antwoord is juist")
+            }
+            else{
+                alert("Je antwoord is fout")
+            } 
+        }
+
+
+        function init() {
+            frm.btn.onclick =controle;
+        }
+        window.onload = init;
+    </script>
+
+
+
+</head>
+
+<body>
+    <form name="frm">
+        <p>In welke provincie ligt Zaventem?</p>
+        <label>
+            <input type="radio" name="prov" id="prov" value="false" />1) Limburg</label>
+        <label><br/>
+            <input type="radio" name="prov" id="prov" value="false" />2) Oost-Vlaanderen</label>
+        <label><br/>
+            <input type="radio" name="prov" id="prov" value="false" />3) Waals Brabant</label>
+        <label><br/>
+            <input type="radio" name="prov" id="prov" value="true" />4) Vlaams Brabant</label>
+        </p>
+        <p>
+            <input type="button" name="btn" value="Controleer" />
+        </p>
+    </form>
+</body>
+
+</html>

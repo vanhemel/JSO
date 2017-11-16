@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Quiz</title>
+    <script>
+        var counter = 0;
+
+        function controleTot() {
+            controle1();
+            controle2();
+            controle3();
+            alert("Je score is " + counter + " op 3.")
+            counter = 0;
+        }
+
+
+        function controle1() {
+            if (frm.prov1[3].checked) {
+                document.getElementById("message1").style.fontWeight="bold";
+                document.getElementById("message1").innerHTML = " Goed";
+                //var antwoord1 = true;
+                counter++
+            }
+            else {
+                document.getElementById("message1").style.fontWeight="bold";
+                document.getElementById("message1").style.color="red";
+                document.getElementById("message1").innerHTML = " Fout";
+               // var antwoord1 = false;
+            }
+          //  return antwoord1;
+        }
+
+        function controle2() {
+            if (frm.prov2[0].checked) {
+                document.getElementById("message2").style.fontWeight="bold";
+                document.getElementById("message2").innerHTML = " Goed";
+               // var antwoord2 = true;
+                counter++
+            }
+            else {
+                document.getElementById("message2").style.fontWeight="bold";
+                document.getElementById("message2").style.color="red";
+                document.getElementById("message2").innerHTML = " Fout";
+               // var antwoord2 = false;
+            } 
+            //return antwoord2;
+        }
+
+        function controle3() {
+            if (frm.prov3[1].checked) {
+                document.getElementById("message3").style.fontWeight="bold";
+                document.getElementById("message3").innerHTML = " Goed";
+               // var antwoord3 = true;
+                counter++
+            }
+            else {
+                document.getElementById("message3").style.fontWeight="bold";
+                document.getElementById("message3").style.color="red";
+                document.getElementById("message3").innerHTML = " Fout";
+               // var antwoord3 = false;
+            } 
+            //return antwoord3;
+        }
+
+        function init() {
+            frm.btn.onclick = controleTot;
+        }
+        window.onload = init;
+    </script>
+
+
+
+</head>
+
+<body>
+    <form name="frm">
+        <p>In welke provincie ligt Zaventem?
+            <span id="message1"></span>
+        </p>
+        <label>
+            <input type="radio" name="prov1" id="prov1" value="false" />1) Limburg</label>
+        <label>
+            <br/>
+            <input type="radio" name="prov1" id="prov1" value="false" />2) Oost-Vlaanderen</label>
+        <label>
+            <br/>
+            <input type="radio" name="prov1" id="prov1" value="false" />3) Waals Brabant</label>
+        <label>
+            <br/>
+            <input type="radio" name="prov1" id="prov1" value="true" />4) Vlaams Brabant</label>
+        </p>
+
+        <br/>
+        <p>In welke provincie ligt Hasselt?
+            <span id="message2"></span>
+        </p>
+        <label>
+            <input type="radio" name="prov2" id="prov2" value="true" />1) Limburg</label>
+        <label>
+            <br/>
+            <input type="radio" name="prov2" id="prov2" value="false" />2) Oost-Vlaanderen</label>
+        <label>
+            <br/>
+            <input type="radio" name="prov2" id="prov2" value="false" />3) Waals Brabant</label>
+        <label>
+            <br/>
+            <input type="radio" name="prov2" id="prov2" value="false" />4) Vlaams Brabant</label>
+        </p>
+
+        <br/>
+        <p>In welke provincie ligt Lede?
+            <span id="message3"></span>
+        </p>
+        <label>
+            <input type="radio" name="prov3" id="prov3" value="false" />1) Limburg</label>
+        <label>
+            <br/>
+            <input type="radio" name="prov3" id="prov3" value="true" />2) Oost-Vlaanderen</label>
+        <label>
+            <br/>
+            <input type="radio" name="prov3" id="prov3" value="false" />3) Waals Brabant</label>
+        <label>
+            <br/>
+            <input type="radio" name="prov3" id="prov3" value="false" />4) Vlaams Brabant</label>
+        </p>
+        <p>
+            <input type="button" name="btn" value="Controleer" />
+        </p>
+    </form>
+</body>
+
+</html>

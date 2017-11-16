@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Events 5</title>
+    <style>
+        body {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    <script>
+        function box() {
+            alert('We gaan knipperen');
+            setInterval(ticker, 1000);
+        }
+
+        var tick = true;
+        function ticker() {
+            if (tick) {
+                document.body.style.backgroundColor = "yellow";
+                tick = false;
+            } else {
+                document.body.style.backgroundColor = "blue";
+                tick = true;
+            }
+        }
+        function init() {
+            setTimeout(box, 2000)
+        }
+        window.onload = init;
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

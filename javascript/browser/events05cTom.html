@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Events 5</title>
+    <script>
+        function box(){
+             alert('De pagina sluit over 5 seconden');
+             setTimeout(sluiten, 5000)
+        }
+
+        function sluiten() {
+            close();
+        }
+
+        function init() {
+            frm.knop.onclick = box;
+        }
+        window.onload = init;
+    </script>
+</head>
+
+<body>
+    <form name="frm">
+        <input type="button" name="knop" value="Sluiten" />
+    </form>
+</body>
+
+</html>

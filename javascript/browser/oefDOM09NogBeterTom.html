@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Wedstrijd</title>
+    <script type="text/javascript">
+        'use strict';
+        var positieS = 0;
+        var positieH = 0;
+        var posS = 0;
+        var posH = 0;
+
+        function positieHbep() {
+            var kans = Math.floor((Math.random() * 100) + 1);
+            switch (true) {
+                case kans <= 20:
+                    positieH = 0;
+                    break;
+                case kans <= 40:
+                    positieH = 9;
+                    break;
+                case kans <= 50:
+                    positieH = -12;
+                    break;
+                case kans <= 80:
+                    positieH = 1;
+                    break;
+                case kans <= 100:
+                    positieH = -2
+                    break;
+            }
+            if (positieH < 0) {
+                positieH = 0;
+            }
+            if (positieH > 69) {
+                positieH = 69;
+            }
+
+            return positieH
+        }
+
+        function positieSbep() {
+            var positieS = 0;
+            var kans = Math.floor((Math.random() * 100) + 1);
+            switch (true) {
+                case kans <= 50:
+                    positieS = 3;
+                    break;
+                case kans <= 80:
+                    positieS = 1;
+                    break;
+                case kans <= 100:
+                    positieS = -6;
+                    break;
+            }
+            if (positieS < 0) {
+                positieS = 0;
+            }
+            if (positieS > 69) {
+                positieS = 69;
+            }
+
+            return positieS
+        }
+
+        function display(text) {
+            var messagePara = document.getElementById("message");
+            messagePara.innerHTML = text;
+        }
+        var teller
+        function start() {
+            teller = setInterval(afdruk, 500);
+        }
+
+        function afdruk() {
+            var parcour = new Array(70);
+            parcour.fill(">");
+            posS += positieSbep();
+            posH += positieHbep();
+            parcour[posS] = 'S';
+            parcour[posH] = 'H';
+            display(parcour);
+
+            var temp = false;
+            if (parcour[(parcour.length) - 1] == 'S') {
+                document.getElementById("resultaat").innerHTML = "De schildpad wint!";
+                temp = true;
+            }
+
+            if (parcour[(parcour.length) - 1] == 'H') {
+                document.getElementById("resultaat").innerHTML = "De haas wint!";
+                temp = true;
+            }
+
+            if (temp) {
+                clearTimeout(teller);
+            }
+        }
+
+        function init() {
+            var btn = frm.btn;
+            btn.addEventListener("click", start);
+        }
+        window.onload = init;
+    </script>
+</head>
+
+<body>
+    <form name="frm">
+        <div id=message></div>
+        <div id=resultaat></div>
+        <input type="button" value="START" name="btn" />
+    </form>
+</body>
+
+</html>

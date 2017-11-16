@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Events 5</title>
+    <style>
+        body {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+
+    <script>
+
+        function start() {
+            setInterval(ticker,300); 
+            frm.btn1.disabled = true;
+        }
+
+        function stop() {
+            clearTimeout(tick);
+        }
+
+        var tick = true;
+        function ticker() {
+            if (tick) {
+                document.body.style.backgroundColor = "yellow";
+                tick = false;
+            } else {
+                document.body.style.backgroundColor = "blue";
+                tick = true;
+            }
+        }
+        function init() {
+            var btn1 = frm.btn1;
+            btn1.addEventListener("click", start);
+            var btn2 = frm.btn2;
+            btn2.addEventListener("click", stop);
+        }
+        window.onload = init;
+    </script>
+</head>
+
+<body>
+    <form name="frm">
+        <input type="button" name="btn1" value="Starten" />
+        <input type="button" name="btn2" value="Stoppen" />
+    </form>
+</body>
+
+</html>

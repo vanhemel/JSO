@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Quiz</title>
+    <script>
+         var counter=0;
+         
+        function controleTot(){
+            controle1();
+            controle2();
+            controle3();
+            alert("Je score is "+counter+" op 3.")
+           counter=0;
+        }
+
+
+        function controle1() {
+            if(frm.prov1[3].checked){
+                counter++
+            }
+        }
+
+        function controle2() {
+            if(frm.prov2[0].checked){
+                counter++
+            }
+        }   
+
+        function controle3() {
+            if(frm.prov3[1].checked){
+                counter++
+            }
+        }   
+        
+        function init() {
+            frm.btn.onclick =controleTot;
+        }
+        window.onload = init;
+    </script>
+
+
+
+</head>
+
+<body>
+    <form name="frm">
+        <p>In welke provincie ligt Zaventem?<span id="message1"></span></p>
+        <label>
+            <input type="radio" name="prov1" id="prov1" value="false" />1) Limburg</label>
+        <label><br/>
+            <input type="radio" name="prov1" id="prov1" value="false" />2) Oost-Vlaanderen</label>
+        <label><br/>
+            <input type="radio" name="prov1" id="prov1" value="false" />3) Waals Brabant</label>
+        <label><br/>
+            <input type="radio" name="prov1" id="prov1" value="true" />4) Vlaams Brabant</label>
+        </p>
+        
+        <br/>
+        <p>In welke provincie ligt Hasselt?<span id="message2"></span></p>
+        <label>
+            <input type="radio" name="prov2" id="prov2" value="true" />1) Limburg</label>
+        <label><br/>
+            <input type="radio" name="prov2" id="prov2" value="false" />2) Oost-Vlaanderen</label>
+        <label><br/>
+            <input type="radio" name="prov2" id="prov2" value="false" />3) Waals Brabant</label>
+        <label><br/>
+            <input type="radio" name="prov2" id="prov2" value="false" />4) Vlaams Brabant</label>
+        </p>
+        
+        <br/>
+        <p>In welke provincie ligt Lede?<span id="message3"></span></p>
+        <label>
+            <input type="radio" name="prov3" id="prov3" value="false" />1) Limburg</label>
+        <label><br/>
+            <input type="radio" name="prov3" id="prov3" value="true" />2) Oost-Vlaanderen</label>
+        <label><br/>
+            <input type="radio" name="prov3" id="prov3" value="false" />3) Waals Brabant</label>
+        <label><br/>
+            <input type="radio" name="prov3" id="prov3" value="false" />4) Vlaams Brabant</label>
+        </p>
+        <p>
+            <input type="button" name="btn" value="Controleer" />
+        </p>
+    </form>
+</body>
+
+</html>
