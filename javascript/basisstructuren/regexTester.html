@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>reguliere expressies</title>
+<script>
+window.onload = init;
+
+function init(){
+    frm.btnControleer.onclick = controleer;
+}
+
+function controleer(){
+    var invoer = frm.invoer.value;
+    var regexp = new RegExp( frm.regexp.value );
+    if( regexp.test(invoer) ){
+        alert(invoer + " is opgebouwd zoals de reguliere expressie beschrijft");
+    }
+    else{
+        alert(invoer + " is NIET opgebouwd zoals de reguliere expressie beschrijft");
+    }
+}
+</script>
+</head>
+
+<body>
+    <form name="frm">
+        <label>invoer:<input type="text" name="invoer"/></label>
+        <label>reguliere expressie:<input type="text" name="regexp"/></label>
+        <input type="button" value="controleer" name="btnControleer" />
+    </form>
+</body>
+
+</html>
