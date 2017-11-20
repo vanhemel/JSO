@@ -7,6 +7,15 @@
     <script>
         var counter = 0;
 
+        function controleLink(){
+            var linkkwis=document.referrer;
+            if (linkkwis=="oefstartkwis.html" ) {
+               
+            } else{
+                location.replace("oefstartkwis.html");
+            }
+        }
+
         function Tijdslimiet(){
             alert("de tijd is verstreken");
             frm.btn.disabled = true;
@@ -69,6 +78,7 @@
         }
 
         function init() {
+            controleLink;
             frm.btn.onclick = controleTot;
             setTimeout(Tijdslimiet, 10000);
            

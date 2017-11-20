@@ -7,7 +7,7 @@ var omzetTot = [0, 0, 0, 0];
 var naam = "";
 
 while (naam != 'einde') {
-    naam = toetsenbord.question('Geef de naam van de verkoper (typ <einde> om te stoppen)1 :  ');
+    naam = toetsenbord.question('Geef de naam van de verkoper (typ <einde> om te stoppen) :  ');
     var positie = verkopers.indexOf(naam);
 
     if (positie == -1) {

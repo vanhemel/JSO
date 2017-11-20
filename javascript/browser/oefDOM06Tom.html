@@ -5,21 +5,31 @@
     <title>Elementen in form aanspreken</title>
     <script type="text/javascript">
         'use strict';
-        
-        function keerOm() {
-            var tekst1 = frm.tekst1.value;
-            var result="";
-            for(var teller=(tekst1.length); teller>=0;teller--){
-                var tmp= tekst1.charAt(teller)
-                result+= tmp;
-            }
-        frm.tekst2.value = result;
-        }
-        
+        var getal1, getal2;
 
+        function telOp() {
+            frm.uitkomst.value = parseInt(frm.getal1.value) +
+                parseInt(frm.getal2.value)
+        }
+        function berekenVerschil() {
+            frm.uitkomst.value = parseInt(frm.getal1.value) -
+                parseInt(frm.getal2.value)
+        }
+        function deel() {
+            frm.uitkomst.value = parseInt(frm.getal1.value) /
+                parseInt(frm.getal2.value)
+        }
+        function vermenigvuldig() {
+            frm.uitkomst.value = parseInt(frm.getal1.value) *
+                parseInt(frm.getal2.value)
+        }
         function init() {
-            var btn = frm.btn;
-            btn.addEventListener("click", keerOm);
+            getal1 = frm.getal1.value;
+            getal2 = frm.getal2.value;
+            document.getElementById("btn1").onclick = telOp;
+            document.getElementById("btn2").onclick = berekenVerschil;
+            document.getElementById("btn3").onclick = vermenigvuldig;
+            document.getElementById("btn4").onclick = deel;
         }
 
         window.onload = init;
@@ -29,13 +39,13 @@
 
 <body>
     <form name="frm">
-        <input type="text" name="getal1" />
-        <input type="text" name="getal2" />
-        <input type="button" value="+" name="btn1" />
-        <input type="button" value="-" name="btn2" />
-        <input type="button" value="x" name="btn3" />
-        <input type="button" value="/" name="btn4" />
-        <input type="text" name="uitkomst" />
+        <input type="number" name="getal1" />
+        <input type="number" name="getal2" />
+        <input type="button" value="+" name="btn1" id="btn1" />
+        <input type="button" value="-" name="btn2" id="btn2" />
+        <input type="button" value="x" name="btn3" id="btn3" />
+        <input type="button" value="/" name="btn4" id="btn4" />
+        <input type="number" name="uitkomst" />
     </form>
 </body>
 
