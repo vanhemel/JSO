@@ -1,7 +1,7 @@
 'use strict';
 
 function controleerRekening(rek) {
-	var expressie = new RegExp(/^BE[0-9]{2}( [0-9]{4}){3}$/i);
+	var expressie = /^BE[0-9]{2}( [0-9]{4}){3}$/i;
 	var isJuist = false;
 	if (expressie.test(rek)) {
 		var getallen = rek.split(" ");
