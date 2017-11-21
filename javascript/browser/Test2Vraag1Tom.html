@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Elementen in form aanspreken</title>
+    <script type="text/javascript">
+        'use strict';
+        var idxVraag;
+
+        function bepVraag(){
+            var vragen = new Array("Vraag1?","Vraag2?","Vraag3?","Vraag4?","Vraag5?");
+            var getal = Math.floor(Math.random()*5);
+            document.getElementById("vraag").value=vragen[getal];
+            idxVraag=getal;
+        }
+        
+        function bepAntwoord(){
+            var antwoorden = new Array("Antwoord1!","Antwoord2!","Antwoord3!","Antwoord4!","Antwoord5!");
+            document.getElementById("antw").value=antwoorden[idxVraag];
+        }
+        
+        function init() {
+            bepVraag();
+            var knop1 = frm.btn1;
+            var knop2 = frm.btn2;
+            knop1.addEventListener("click", bepVraag);
+            knop2.addEventListener("click", bepAntwoord);
+        }
+        window.onload = init;
+
+    </script>
+</head>
+
+<body>
+    <form name="frm">
+        <input type="button" value="Bepaal de actieve vraag" name="btn1" /><br/>
+        <p>Vraag:</p>
+        <input type="text" name="vraag" id="vraag"/><br/>
+        <br/>
+        <br/>
+        <input type="button" value="Bepaal het antwoord op die vraag" name="btn2" /><br/>
+        <p>Antwoord:</p>
+        <input type="text" name="antw" id="antw"/><br/>
+    </form>
+</body>
+
+</html>

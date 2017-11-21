@@ -3,7 +3,7 @@
 // onderstaand script moet de getallen van 1 t.e.m. 5
 // toevoegen aan tabel1
 var tabel1 = []
-for(var getal=1; getal<=5; getal++);
+for(var getal=1; getal<=5; getal++)
 {
     tabel1.push(getal);
 }
@@ -23,7 +23,7 @@ function min(){
     }
 }
 var tabel2 = [3,5,1,6,9];
-console.log(min(tabel2)) // gewenste output: 1 
+console.log(min(...tabel2)) // gewenste output: 1 
 
 // deze functie moet het aantal elementen in een twee-dim array teruggeven
 function aantalElementen(tabel){
@@ -47,6 +47,7 @@ function afstand(x1,y1,x2,y2){
     var tmp1 = Math.pow(x1-x2,2);
     var tmp2 = Math.pow(y1-y2,2);
     var result = Math.sqrt(tmp1 + tmp2);
+    return result;
 }
 console.log(afstand(4,6,1,2));  // gewenste output: 5 
 

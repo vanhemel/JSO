@@ -10,3 +10,6 @@ function witruimte() {
 
 var resultaat = witruimte(zin);
 console.log(resultaat);
+
+/* reguliere expressies zijn gulzig
+console.log ("banaaaaaaaaan".replace(/a{2,}/g,"***"));*/

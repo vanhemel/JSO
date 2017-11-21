@@ -13,12 +13,8 @@ function init(){
 
 function controleer(){
     var invoer = frm.invoer.value;
-<<<<<<< HEAD
-    var regexp = new RegExp( frm.regexp.value, "i");
-=======
     var regexp = frm.hoofdlettergevoelig.checked ? new RegExp(frm.regexp.value) :
                      new RegExp(frm.regexp.value, "i");
->>>>>>> 9fc02c20e13e9585e6d7fa954fa63f12938e8021
     if( regexp.test(invoer) ){
         alert(invoer + " is opgebouwd zoals de reguliere expressie beschrijft");
     }
