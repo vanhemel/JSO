@@ -1,7 +1,9 @@
 'use strict';
 var canvas, context, topx;
 
-window.onload = drawSint;
+window.onload = function(){
+    setInterval(drawSint, 1000);
+};
 
 function drawSint() {
     canvas = document.getElementById("mijnCanvas");
@@ -21,6 +23,13 @@ function drawFace() {
     drawBeard();
     drawMouth();
     drawMiter();
+    drawCross();
+    drawImage("c://Data Javascript/docu oefeningen/sint.gif",
+        Math.floor(Math.random() * canvas.clientHeight - 150),
+        Math.floor(Math.random() * canvas.clientHeight - 150), 150, 150);
+    drawText("yellow","Dag sinterklaasje!", topx, canvas.clientHeight-50);
+    drawSnoepje();
+   drawMeerSnoepjes();
 }
 
 function drawCircle(color, x, y, radius) {
@@ -30,15 +39,41 @@ function drawCircle(color, x, y, radius) {
     context.fill();
 }
 
-function drawPolygon(color,vertices){
-    context.fillStyle=color;
+function drawPolygon(color, vertices) {
+    context.fillStyle = color;
     context.beginPath();
-    context.moveTo(vertices[0],vertices[1]);
-    for(var i=2; i<vertices.length; i +=2){
-        context.lineTo(vertices[i], vertices[i+1]);
+    context.moveTo(vertices[0], vertices[1]);
+    for (var i = 2; i < vertices.length; i += 2) {
+        context.lineTo(vertices[i], vertices[i + 1]);
     }
     context.lineTo(vertices[0], vertices[1]);
     context.fill();
+}
+
+function drawLine(color, x1, y1, x2, y2, width) {
+    context.strokeStyle = color;
+    context.lineWidth = width;
+    context.beginPath();
+    context.moveTo(x1, y1);
+    context.lineTo(x2, y2);
+    context.stroke();
+}
+
+function drawImage(imgName, x, y, width, height) {
+    var img = new Image();
+    img.src = imgName;
+    // images zijn niet altijd snel geladen, daarom wachten we tot de prent 
+    // helemaal geladen is voor we ze op het canvas tekenen
+    img.onload = function () {
+        context.drawImage(img, x, y, width, height);
+    }
+}
+
+function drawText(color,text,x,y){
+    context.fillStyle=color;
+    context.font="bold 2em sans-serif";
+    context.textAlign="center";
+    context.fillText(text,x,y);
 }
 
 function drawEyes() {
@@ -67,10 +102,32 @@ function drawMouth() {
     context.fill();
 }
 
-function drawBeard(){
-drawPolygon("White",[topx-60,360,topx+60,360,topx,520])
+function drawBeard() {
+    drawPolygon("White", [topx - 60, 360, topx + 60, 360, topx, 520])
 }
 
-function drawMiter(){
-    drawPolygon("Red",[topx-60,300,topx-120,180,topx,60,topx+120,180,topx+60,300])
+function drawMiter() {
+    drawPolygon("Red", [topx - 60, 300, topx - 120, 180, topx, 60, topx + 120, 180, topx + 60, 300])
+}
+
+function drawCross() {
+    drawLine("gold", topx - 120, 180, topx + 120, 180, 10)
+    drawLine("gold", topx, 60, topx, 300, 10)
+}
+
+function drawSnoepje(){
+    var middepuntx=Math.floor(Math.random() * (canvas.clientHeight - 10));
+    var middepunty=Math.floor(Math.random() * (canvas.clientHeight - 10));
+    var straal=10;
+    var kleuren=["green","blue","lila","orange","purple","violet"];
+    var kleurKeuze=kleuren[Math.floor(Math.random() * (6-1))];
+    drawCircle(kleurKeuze,middepuntx ,middepunty, straal) 
+    drawPolygon(kleurKeuze, [middepuntx+straal,middepunty,middepuntx+straal+7,middepunty-straal,middepuntx+straal+7,middepunty+straal] )
+    drawPolygon(kleurKeuze, [middepuntx-straal,middepunty,middepuntx-straal-7,middepunty+straal,middepuntx-straal-7,middepunty-straal] )
+}
+
+function drawMeerSnoepjes(){
+    for (var i=0; i< 20; i++) {
+        drawSnoepje();
     }
+}
