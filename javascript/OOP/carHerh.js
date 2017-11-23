@@ -41,9 +41,17 @@ function fillModelsSelect(){
 }
 
 function clearOptions(select){
-    while(select.options.length > 0){
+    /*
+    var lengte = select.options.length;
+    for(var i=0; i<lengte; i++){
         select.remove(0);
     }
+    */
+    /*
+    while(select.options.length > 0){
+        select.remove(0);
+    }*/
+    select.innerHTML = "";
 }
 
 function ride(){
@@ -55,6 +63,7 @@ function ride(){
     alert("zoom zoom.  Een ritje met een " + color + " "
         +  make + convertible + model + " uit "+ year);
     var afstand = parseInt(document.getElementById("txtAfstand").value);
-    document.getElementById("txtKmstand").value = parseInt(document.getElementById("txtKmstand").value) + afstand;
+    document.getElementById("txtKmstand").value =
+     parseInt(document.getElementById("txtKmstand").value) + afstand;
 
 }
