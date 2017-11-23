@@ -3,7 +3,8 @@ var toetsenbord = require('readline-sync');
 
 var woordFrequenties = [];
 var zin = toetsenbord.question('Tik een zin in: ');
-var woorden = zin.split(" ");
+var zinZonderLeestekens = zin.replace(/[.,;:!?"']/g,"");
+var woorden = zinZonderLeestekens.split(" ");
 var woord;
 for(var i=0; i < woorden.length; i++){
     woord = woorden[i].toUpperCase();
