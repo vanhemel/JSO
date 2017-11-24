@@ -21,6 +21,3 @@ for(var i=0; i < tankbeurten.length; i++){
 console.log('Totale hoeveelheid brandstof = %d', somHoeveelheid);
 console.log('Totale afstand = %d', somAfstand);
 console.log('Verbruik per 100km = %d', 100 * somHoeveelheid/somAfstand);
-
-
-// of met een arrow fie:
