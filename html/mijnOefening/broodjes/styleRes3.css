@@ -6,36 +6,43 @@ html {
 body {
     margin: 0 auto;
     max-width: 1300px;
+    min-width: 770px;
     display: flex;
     flex-flow: column nowrap;
     background: rgba(161, 157, 95, 0.774);
 }
-
-.list {
-display: flex;
-flex-direction:column;
-flex-wrap: wrap;
+ul{
+    margin: 0 auto;
+    display:grid;
+    grid-template-columns: 50% 50%;
 }
 
 .general {
     padding: 10px;
     text-align: center;
-    font-family:'Segoe UI', Tahoma, Verdana, sans-serif;
+    font-family: Times, Georgia, 'Times New Roman';
+    color: rgb(66, 46, 46);
 }
 
-.page-header {
+.header {
     grid-area: header;
-    font-size: 80px;
+    font-size: 4em;
     background:rgb(145, 145, 1);
     font-style: italic;
 }
+.titelspan{
+    font-size: 30px;
+    font-style: italic;
+}
+
 .specials {
-    grid-area: aside;
+   display: flex;
     background: rgb(145, 145, 1);
-    font-size: 30px
+    font-size: 40px;
+    justify-content: center;
 }
 nav{ 
-    font-size: 20px;
+    font-size: 25px;
     float: right;
     margin: 10px 70px;
     font-style: normal;
@@ -61,13 +68,12 @@ nav{
     border-radius: 10px;
     list-style: none;
     margin: 10px;
-    font-size: 20px;
-    display: inline-block;
+    font-size: 32px;
 }
 img{
     max-width: 300px;
     height: auto;
-    padding:35px 0px;
+    padding:22px 0px;
 }
 .verticaal{
     display:flex;
@@ -93,17 +99,26 @@ img{
     margin:0px 130px;
 }
 
-/*@media screen and (min-width:770px){
-
+@media screen and (min-width:770px){
     body {
-        margin: 0 auto;
-        height: 960px;
-        max-width: 1300px;
-        display: grid;
-        grid-template-areas: "header header" 
-                            "main aside";
-        grid-template-columns: 1fr 400px;
-        grid-template-rows: auto 1fr;
-        background: rgba(161, 157, 95, 0.774);
-    }
+    margin: 0 auto;
+    max-width: 1300px;
+    min-width: 770px;
+    background: rgba(161, 157, 95, 0.774);
+    display: grid;
+    grid-template-areas: "header header" 
+                        "main aside";
+    grid-template-columns: 1fr 400px;
+    grid-template-rows: auto 1fr;
+}
+main {
+    grid-area: main;  
+}
+aside {
+    grid-area: aside;
+}
+ul{
+    display:grid;
+    grid-template-columns: 50% 50%;
+}
 }

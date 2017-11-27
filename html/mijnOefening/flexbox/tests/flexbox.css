@@ -1,0 +1,62 @@
+#parent{
+    background-color: darkgrey;
+    width:800px;
+    height: 600px;
+    display:flex;
+    padding: 0;
+    /*basis*/
+    flex-direction: row;
+    flex-wrap:wrap-reverse;
+    
+    justify-content:space-around;
+    align-items: center;
+    /*align-content: space-between;*/
+}
+
+.child{
+    width:100px;
+    height: 100px;
+    margin:5px;
+    display: inline-block;
+}
+.een{
+    background-color:red;
+}
+.twee{
+    background-color:green;
+    align-self: flex-start;
+}
+.drie{
+    background-color:blue;
+}
+.vier{
+    background-color:yellow;
+    align-self: flex-end;
+}
+.vijf{
+    background-color:magenta;
+}
+.zes{
+    background-color:cyan;
+    align-self: flex-start;
+}
+.zeven{
+    background-color:brown;
+}
+.acht{
+    background-color:red;
+}
+.negen{
+    background-color:green;
+    align-self:flex-end;
+}
+.tien{
+    background-color:blue;
+}
+.elf{
+    background-color:yellow;
+    align-self:flex-end;
+}
+.twaalf{
+    background-color:magenta;
+}

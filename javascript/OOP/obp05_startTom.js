@@ -12,7 +12,7 @@ function Auto (snelheid, aantal_uren, aantal_minuten) {
 Rekening.prototype.afstand = function () {
     
     }
-    return nieuwBed;
+    return afstand;
 }
 
 
