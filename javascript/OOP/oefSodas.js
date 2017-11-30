@@ -14,6 +14,9 @@ printProducts(products);
 console.log("\n------- sorting by name -------");
 products.sort(compareName);
 printProducts(products);
+console.log("\n------- sorting by name (reverse) -------");
+products.sort(compareNameReverse);
+printProducts(products);
 console.log("\n------- sorting by calories -------");
 products.sort(compareCalories);
 printProducts(products);
@@ -27,6 +30,15 @@ function compareName(colaA, colaB) {
 		return 0;
 	} else {
 		return -1;
+	}
+}
+function compareNameReverse(colaA, colaB) {
+	if (colaA.name > colaB.name) {
+		return -1;
+	} else if (colaA.name === colaB.name) {
+		return 0;
+	} else {
+		return 1;
 	}
 }
 function compareCalories(colaA, colaB) {
@@ -56,6 +68,8 @@ function compareSold(colaA, colaB) {
 		return -1;
 	}
 }
+
+
 function printProducts(products) {
 	for (var i = 0; i < products.length; i++) {
 		console.log("Name: " + products[i].name +
