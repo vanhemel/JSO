@@ -21,7 +21,7 @@ function maakHoofding(){
 function maakLijst(){
     var ul = document.createElement("ul");
     document.body.appendChild(ul);
-    ul.id = "lijst"
+    // ul.id = "lijst"
     var li;
     for(var i=0; i<lijstje.length; i++){
         li = document.createElement("li");
@@ -43,7 +43,8 @@ function maakKnop(){
 function voegItemToe(){
     var li = document.createElement("li");
     li.innerText = document.getElementById("invoer").value;
-    var ul = document.getElementById("lijst");
+    // var ul = document.getElementById("lijst");
+    var ul = document.getElementsByTagName("ul")[0];
     ul.appendChild(li);
 }
 </script>
