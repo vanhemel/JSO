@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <title>Grid</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="styleRes5.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header general">
+        <div>
+            <span class="titelspan">Bij</span> Josephine
+        </div>
+        <nav>
+            <ul>
+                <li class="menu">
+                    <a href="indexRes5.html">Welkom</a>
+                </li>
+                <li class="menu">
+                    <a href="bestellingen5.html">Bestellen</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main general">
+        <div>
+            <span class="titelspan">Verse broodjes van toen...</span>
+        </div>
+        <div class="wrapper">
+            <form method="POST">
+                <p class="verticaal tabel">Broodje:
+                    <br/>
+                    <select name="menu">
+                        <option value='keuze' selected>'t Pickeltje (2,50 €)</option>
+                        <option value='keuze'>'t Bolleke (2,50 €)</option>
+                        <option value='keuze'>De Keasboem (2,80 €)</option>
+                        <option value='keuze'>'t Espenblad (2,80 €)</option>
+                        <option value='keuze'>De Grungblyver (2,80 €)</option>
+                        <option value='keuze'>De Pilchard (3,10 €)</option>
+                    </select>
+                </p>
+                <p class="tabel">
+                    <label>
+                        <input type="radio" name="type" checked/>Wit</label>
+                    <label>
+                        <input type="radio" name="type" />Bruin</label><br/>
+                    <label>Smos
+                        <input type="checkbox" name="smos" /></label>
+                </p>
+                <p>
+                    <input type="submit" name="btnK" value="Bestel nu!" />
+                </p>
+
+            </form>
+
+            <table class="tabel verticaal">
+                <tr>
+                    <th>Broodje</th>
+                    <th>Prijs</th>
+                </tr>
+                <tr>
+                    <td>'t Bolleke</td>
+                    <td>2,50</td>
+                </tr>
+                <tr>
+                    <td>'t Espenblad</td>
+                    <td>2,80</td>
+                </tr>
+                <tr>
+                    <td>De Pilchard</td>
+                    <td>3,10</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Totaal</strong>
+                    </td>
+                    <td>8,40</td>
+                </tr>
+            </table>
+        </div>
+    </main>
+    <aside class="specials general">
+        <div>
+            <span>Broodje van de dag!</span>
+            <li class="broodjes"><div>De Pilchard</div>
+                <img src="broodje.png">
+            </li>
+        </div>
+    </aside>
+</body>
+
+</html>

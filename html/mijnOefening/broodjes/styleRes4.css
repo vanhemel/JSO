@@ -51,7 +51,9 @@ nav{
     margin: 10px 70px;
     font-style: normal;
 }
-
+.navigatie{
+    background: rgb(145, 145, 1);
+}
 .menu{
     display: inline-block;
     list-style: none;
@@ -110,10 +112,16 @@ img{
     min-width: 770px;
     background: rgba(161, 157, 95, 0.774);
     display: grid;
-    grid-template-areas: "header header" 
+    grid-template-areas: "header nav" 
                         "main aside";
     grid-template-columns: 1fr 400px;
     grid-template-rows: auto 1fr;
+}
+header{
+    grid-area: header;
+}
+nav{
+    grid-area: nav;
 }
 main {
     grid-area: main;  
