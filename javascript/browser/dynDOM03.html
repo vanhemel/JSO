@@ -45,7 +45,7 @@ function wijzigLijstitemsInButtons(){
     var btn;
     for(var i=0; i< ul.childNodes.length; i++){
         btn = document.createElement("button");
-        btn.type="button";
+        // btn.type="button";  // zinloos
         btn.innerText= ul.childNodes[i].innerText;
         div.appendChild(btn);
     }
