@@ -21,11 +21,16 @@ function maakLijst(){
     var ul = document.createElement("ul");
     document.body.appendChild(ul);
     var li;
-    for(var i=0; i<lijstje.length; i++){
+    // for(var i=0; i<lijstje.length; i++){
+    //     li = document.createElement("li");
+    //     li.innerText = lijstje[i];
+    //     ul.appendChild(li);
+    // }
+    // met forEach:
+    lijstje.forEach( item => {
         li = document.createElement("li");
-        li.innerText = lijstje[i];
-        ul.appendChild(li);
-    }
+        li.innerText = item;
+        ul.appendChild(li); } );
 }
 
 function maakKnop(){
