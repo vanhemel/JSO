@@ -64,39 +64,7 @@ Speelkaartenboek.prototype.isLeeg = function () {
 }
 
 Speelkaartenboek.prototype.volgendeKaart = function () {
-var volgKaart= this.speelkaarten.pop();
+    var volgKaart= this.speelkaarten.pop();
+    
 return volgKaart
 }
-
-/*var klaverenDrie = new Speelkaart("klaveren", "3");
-console.log(klaverenDrie.omschrijving());
-
-var speelkaarten = new Speelkaartenboek();
-console.log("boek na creatie:");
-for (var i = 0; i < speelkaarten.speelkaarten.length; i++) {
-    console.log(speelkaarten.speelkaarten[i].omschrijving());
-}
-if (speelkaarten.isLeeg()) {
-    console.log("*** alle kaarten zijn opgevraagd ***");
-}
-else {
-    console.log("*** er zijn nog niet opgevraagde kaarten ***"); // YEP
-}
-console.log("kaarten een voor een vragen na creatie:");
-for (var i = speelkaarten.speelkaarten.length-1; i >=0 ; i--) {
-    console.log(speelkaarten.volgendeKaart().omschrijving());
-}
-if (speelkaarten.isLeeg()) {
-    console.log("*** alle kaarten zijn opgevraagd ***");  // YEP
-}
-else {
-    console.log("*** er zijn nog niet opgevraagde kaarten ***");
-}
-speelkaarten.schud();  //start terug met volledig boek en schud de kaarten
-if (speelkaarten.isLeeg()) {
-    console.log("*** alle kaarten zijn opgevraagd ***");
-}
-else {
-    console.log("*** na schudden starten we terug met een volledig boek ***"); // YEP
-}
-*/
