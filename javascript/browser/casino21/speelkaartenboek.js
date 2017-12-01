@@ -44,7 +44,7 @@ Speelkaartenboek.prototype.isLeeg = function(){
     return this.index == this.speelkaarten.length;
 }
 
-
+/*
 var klaverenDrie = new Speelkaart("klaveren", "3");
 console.log(klaverenDrie.omschrijving());
 
@@ -81,3 +81,4 @@ console.log("kaarten een voor een vragen na schudden:");
 for (var i = 0; i < kaartenboek.speelkaarten.length; i++) {
     console.log(kaartenboek.volgendeKaart().omschrijving());
 }
+*/
