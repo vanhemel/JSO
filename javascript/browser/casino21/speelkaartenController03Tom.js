@@ -21,8 +21,6 @@ function schudden() {
     //speelkaarten = new Speelkaartenboek();
     //speelkaarten.schud();
     location.reload();
-    //document.getElementById("btn1").value="Geef kaart";
-    //document.getElementById("btn1").disabled=false;
 }
 
 function init() {
