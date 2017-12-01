@@ -46,4 +46,4 @@ function fieMetFunctionAlsUitkomst(){
 
 var resultFie = fieMetFunctionAlsUitkomst();
 resultFie();
-console.log( fieMetFunctionAlsUitkomst()() );
+fieMetFunctionAlsUitkomst()() ;

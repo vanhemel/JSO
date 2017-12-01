@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DOM manipulatie: voorbeeld 1</title>
+    <script>
+        var lijstje = ["brood", "kaas", "boter", "ham"];
+
+        window.onload = function () {
+            maakHoofding();
+            maakLijst();
+            maakCheckbox();
+            maakKnop();
+            var knop = frm.butn;
+            knop.addEventListener("click", lijstToevoegen);
+        }
+
+        function maakHoofding() {
+            var h2 = document.createElement("h2");
+            h2.innerText = "Boodschappenlijstje";
+            document.body.appendChild(h2);
+        }
+
+        function maakLijst() {
+            var ul = document.createElement("ul");
+            ul.id="list";
+            document.body.appendChild(ul);
+            var li;
+            for (var i = 0; i < lijstje.length; i++) {
+                li = document.createElement("li");
+                li.innerText = lijstje[i];
+                ul.appendChild(li);
+            }
+        }
+        function maakKnop() {
+            var btn = document.createElement("input");
+            btn.type = "button";
+            btn.value = "bestellen";
+            btn.onclick = function () {
+                alert("uw bestelling wordt verwerkt");
+                lijstMelk();
+            }
+            document.body.appendChild(btn);
+        }
+        function lijstToevoegen() {
+            var item = frm.ingred.value;
+            var li;
+            var ul = document.getElementsByTagName("ul")[0];
+            li = document.createElement("li");
+            li.innerText = item;
+            ul.appendChild(li);
+        }
+        function maakCheckbox() {
+            var label = document.createElement("label");
+            document.body.appendChild(label);
+            label.innerText= "melkallergie";
+            var check = document.createElement("input");
+            check.type = "checkbox";
+            check.id = "check";
+            document.body.insertBefore(check, frm.btn);
+        }
+        function lijstMelk() {
+            if (document.getElementById("check").checked) {
+                var lijst=document.getElementsByTagName("li"); 
+                for(var i=lijst.length - 1; i >= 0; i--){
+                   if(lijst[i].innerText =="melk" || lijst[i].innerText=="boter" || lijst[i].innerText=="kaas" || lijst[i].innerText=="yoghurt" ){
+                           document.getElementById("list").removeChild(lijst[i]);
+                    }
+                }
+            } 
+        }
+    </script>
+</head>
+
+<body>
+    <form name="frm">
+        <input type="button" name="butn" value="Toevoegen" />
+        <input type="text" name="ingred" />
+    </form>
+    <h1>Onderstaande elementen zijn dynamisch toegevoegd</h1>
+
+</body>
+
+</html>
