@@ -7,6 +7,15 @@ for(var i =0; i<10; i++){
 	fs.push( () => console.log(i) );
 }
 /**/console.log(fs[0])
+/*
+for(var teller=0; teller< fs.length;teller++){
+	 var f = fs[teller];
+	 f();
+	// korter:
+	//fs[teller]();
+}
+*/
+// korter met forEach:
 fs.forEach( f => f());  // 10 keer 10
 
 var fs2 = [];
