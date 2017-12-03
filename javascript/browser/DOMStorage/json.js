@@ -1,5 +1,3 @@
-// vooraf: npm install ajv
-
 'use strict';
 
 // JSON object (niet voorgesteld als string)
