@@ -22,7 +22,7 @@ function bewaarPersoonInLocalStorage(naam, voornaam){
 	if (personen == null){
 		personen = new Array();
 	}
-	personen[personen.length] = {"naam": naam, "voornaam": voornaam};
+	personen[personen.length] = {naam: naam, voornaam: voornaam};
 	localStorage.setItem('personen', JSON.stringify(personen));
 }
 
