@@ -11,15 +11,15 @@ window.onload = function() {
 function previewHandler() {
 	var canvas = document.getElementById("tshirtCanvas");
 	var context = canvas.getContext("2d");
-	// there's no 3D canvas yet; this is to make code futureproof
-
+	
 	fillBackgroundColor(canvas, context);
 
 	var selectObj = document.getElementById("shape");
 	var index = selectObj.selectedIndex;
 	var shape = selectObj[index].value;
 
-	if (shape == "squares") {
+	if (shape != "Neither"){}
+	else if (shape == "squares") {
 		for (var squares = 0; squares < 20; squares++) {
 			drawSquare(canvas, context);
 		}
@@ -33,12 +33,8 @@ function previewHandler() {
 	drawBird(canvas, context);
 }
 
-// This is where we'll set the background color
 function fillBackgroundColor(canvas, context) {
-	var selectObj = document.getElementById("backgroundColor");
-	var index = selectObj.selectedIndex;
-	var bgColor = selectObj[index].value;
-
+	var bgColor = document.getElementById("kleur1").value;
 	context.fillStyle = bgColor;
 	context.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -50,10 +46,7 @@ function drawSquare(canvas, context) {
 	var x = Math.floor(Math.random() * canvas.width);
 	var y = Math.floor(Math.random() * canvas.height);
 
-	// Use this fillStyle instead if you want to try
-	// "twitter blue"
-	//context.fillStyle = "rgb(0, 173, 239)";
-	context.fillStyle = "lightblue";
+	context.fillStyle = document.getElementById("kleur2").value;
 	context.fillRect(x, y, w, w);
 }
 
@@ -66,18 +59,15 @@ function drawCircle(canvas, context) {
 	context.beginPath();
 	context.arc(x, y, radius, 0, degreesToRadians(360), true);
 
-	// Use this fillStyle instead if you want to try
-	// "twitter blue"
-	//context.fillStyle = "rgb(0, 173, 239)";
-	context.fillStyle = "lightblue";
+	context.fillStyle = document.getElementById("kleur2").value;
 	context.fill();
 }
 
 // draws all the text, including the tweet
 function drawText(canvas, context) {
 	var selectObj = document.getElementById("foregroundColor");
-	var index = selectObj.selectedIndex;
-	var fgColor = selectObj[index].value;
+	
+	var fgColor = document.getElementById("kleur3").value;
 
 	context.fillStyle = fgColor;
 	context.font = "bold 1em sans-serif";
@@ -91,21 +81,6 @@ function drawText(canvas, context) {
 	var tweet = selectObj[index].value;
 	context.font = "italic 1.2em serif";
 	context.fillText(tweet, 30, 100);
-
-	// If you want to try splitIntoLines to 
-	// handle longer tweets, uncomment this code
-	// and replace the context.fillText line above
-/*
-	if (tweet.length > 60) {
-		var tweetLines = splitIntoLines(tweet);
-		for (var i = 0; i < tweetLines.length; i++) {
-			context.fillText(tweetLines[i], 30, 70+(i*25));
-		}
-	}
-	else {
-		context.fillText(tweet, 30, 100);
-	}
-*/
 
 	context.font = "bold 1em sans-serif";
 	context.textAlign = "right";

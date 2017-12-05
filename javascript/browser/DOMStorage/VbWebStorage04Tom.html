@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Web Storage - voorbeeld 3</title>
+</head>
+
+<body>
+    <h1>JSON object in web storage</h1>
+    <form>
+        <label for="naam">Naam:</label>
+        <input type="text" id="naam" placeholder="Tik hier uw naam">
+        <br/>
+        <label for="voornaam">Voornaam:</label>
+        <input type="text" id="voornaam" placeholder="Tik hier uw voornaam">
+        <br/>
+        <input type="button" value="Bewaar" onclick="bewaarPersoonInLocalStorage(this.form.naam.value, this.form.voornaam.value)">
+    </form>
+    <input type="button" value="Toon" onclick="toonPersoonUitLocalStorage()">
+    <h2 id="overzicht">Overzicht personen:</h2>
+</body>
+<script>
+    function bewaarPersoonInLocalStorage(naam, voornaam) {
+        var persoon = JSON.parse(localStorage.getItem('persoon'));
+        if (persoon == null) {
+            persoon = [];
+        }
+        var temp = { "naam": naam, "voornaam": voornaam };
+        persoon.push(temp);
+        localStorage.setItem('persoon', JSON.stringify(persoon));
+    }
+
+    function toonPersoonUitLocalStorage() {
+        var persoon = JSON.parse(localStorage.getItem('persoon'));
+        var ul = document.createElement("ul");
+        document.body.appendChild(ul);
+        var li;
+        if (persoon != null) {
+            for (var i = 0; i < persoon.length; i++) {
+                li = document.createElement("li");
+                li.innerText = (persoon[i].voornaam + " " + persoon[i].naam);
+                ul.appendChild(li);
+            }
+        }
+        else {
+                alert("Er is nog geen persoon bewaard.");
+            }
+        }
+
+        function maakLijst() {
+
+
+            for (var i = 0; i < lijstje.length; i++) {
+
+            }
+        }
+</script>
+
+
+
+</html>
