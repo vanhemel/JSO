@@ -3,37 +3,48 @@
 window.onload = function() {
 	var button = document.getElementById("previewButton");
 	button.onclick = previewHandler;
-	var select = document.getElementById("shape");
-	select.onchange = colorPicker;
-
+	
+	var shapeSelect = document.getElementById("shape");
+	shapeSelect.onchange = shapecolorDisplayHandler;
+	shapecolorDisplayHandler();
+	
 	// Easter Egg ;-)
 	makeImage();
 }
 
-
-function colorPicker(){
-	if (shape != "Neither"){
-		document.getElementById("kleur2").style.visibility="visible";
+function shapecolorDisplayHandler(){
+	var shapeSelect = document.getElementById("shape");
+	var shapeColor = document.getElementById("shapesColor");
+	if (shapeSelect.value == "none"){
+		// shapeColor.style.display = "none";
+		// of
+		shapeColor.hidden = true;
+	}
+	else{
+		// shapeColor.style.display = "inline";
+		// of
+		shapeColor.hidden = false;
 	}
 }
 
 function previewHandler() {
 	var canvas = document.getElementById("tshirtCanvas");
 	var context = canvas.getContext("2d");
-
-	fillBackgroundColor(canvas, context);
-
 	var selectObj = document.getElementById("shape");
 	var index = selectObj.selectedIndex;
 	var shape = selectObj[index].value;
+	var drawFion = null;
+
+	fillBackgroundColor(canvas, context);
 	if (shape == "squares") {
-		for (var squares = 0; squares < 20; squares++) {
-			drawSquare(canvas, context);
-		}
+		drawFion = drawSquare; 
 	}
 	else if (shape == "circles") {
-		for (var circles = 0; circles < 20; circles++) {
-			drawCircle(canvas, context);
+		drawFion = drawCircle;
+	}
+	if (drawFion != null){
+		for (var i = 0; i < 20; i++) {
+			drawShape(canvas, context, drawFion);
 		}
 	}
 	drawText(canvas, context);
@@ -41,57 +52,87 @@ function previewHandler() {
 }
 
 function fillBackgroundColor(canvas, context) {
-	var bgColor = document.getElementById("kleur1").value;
+	var selectObj = document.getElementById("backgroundColor");
+	var bgColor = selectObj.value;
 	context.fillStyle = bgColor;
 	context.fillRect(0, 0, canvas.width, canvas.height);
 }
 
-// Draws a square at a random location
+/*
 function drawSquare(canvas, context) {
 	var w = Math.floor(Math.random() * 40);    
 	var x = Math.floor(Math.random() * canvas.width);
 	var y = Math.floor(Math.random() * canvas.height);
+	var figuresColor = document.getElementById("shapesColor");
+	context.fillStyle = figuresColor.value;
+	context.fillRect(x, y, w, w);
+}
+*/
 
-	var figColor=document.getElementById("kleur2").value;
-	context.fillStyle = figColor;
+function drawSquare(context, x, y, w){
 	context.fillRect(x, y, w, w);
 }
 
-// Draws a circle at a random location
+/*
 function drawCircle(canvas, context) {
 	var radius = Math.floor(Math.random() * 40);
 	var x = Math.floor(Math.random() * canvas.width);
 	var y = Math.floor(Math.random() * canvas.height);
+	var figuresColor = document.getElementById("shapesColor");
 
 	context.beginPath();
 	context.arc(x, y, radius, 0, degreesToRadians(360), true);
-	
-	var figColor=document.getElementById("kleur2").value;
-	context.fillStyle = figColor;
+	context.fillStyle = figuresColor.value;
+	context.fill();
+}
+*/
+
+function drawCircle(context, x, y, w){
+	context.beginPath();
+	context.arc(x, y, w, 0, degreesToRadians(360), true);
 	context.fill();
 }
 
-// draws all the text, including the tweet
+function drawShape(canvas, context, drawHandler){
+	var radius = Math.floor(Math.random() * 40);
+	var x = Math.floor(Math.random() * canvas.width);
+	var y = Math.floor(Math.random() * canvas.height);
+	var figuresColor = document.getElementById("shapesColor");
+	context.fillStyle = figuresColor.value;
+	drawHandler(context,x,y,radius);
+}
+
 function drawText(canvas, context) {
 	var selectObj = document.getElementById("foregroundColor");
-	
-	var textColor = document.getElementById("kleur3").value;
+	var fgColor = selectObj.value;
+	var textSize = document.getElementById("textSize").value;
 
-	context.fillStyle = textColor;
+	context.fillStyle = fgColor;
 	context.font = "bold 1em sans-serif";
 	context.textAlign = "left";
 	context.fillText("I saw this tweet", 20, 40);
 
-
-	// draw the tweet!
 	selectObj = document.getElementById("tweets");
 	var index = selectObj.selectedIndex;
 	var tweet = selectObj[index].value;
-	context.font = "italic 1.2em serif";
-	var textSize = "italic "+document.getElementById("textSize").value+"em serif";
-	context.font = textSize;
+	context.font = "italic " + textSize + "em serif";
 	context.textAlign = "center";
-	context.fillText(tweet, 300, 100);
+	context.fillText(tweet, canvas.width/2, 100);
+
+	// If you want to try splitIntoLines to 
+	// handle longer tweets, uncomment this code
+	// and replace the context.fillText line above
+/*
+	if (tweet.length > 60) {
+		var tweetLines = splitIntoLines(tweet);
+		for (var i = 0; i < tweetLines.length; i++) {
+			context.fillText(tweetLines[i], 30, 70+(i*25));
+		}
+	}
+	else {
+		context.fillText(tweet, 30, 100);
+	}
+*/
 
 	context.font = "bold 1em sans-serif";
 	context.textAlign = "right";
@@ -99,11 +140,9 @@ function drawText(canvas, context) {
 		canvas.width-20, canvas.height-40);
 }
 
-// draws the twitter bird image
 function drawBird(canvas, context) {
 	var twitterBird = new Image();
 	twitterBird.src = "images/twitterBird.png";
-	// images don't always load immediatly, so we make sure the image is fully loaded before we draw it:
 	twitterBird.onload = function() {
 		context.drawImage(twitterBird, 20, 120, 70, 70);
 	};
@@ -114,25 +153,16 @@ function degreesToRadians(degrees) {
     return (degrees * Math.PI)/180;
 }
 
-
 function updateTweets(tweets) {
 	var tweetsSelection = document.getElementById("tweets");
 
-	// add all tweets to the tweets menu
 	for (var i = 0; i < tweets.length; i++) {
 		var tweet = tweets[i];
-
-		// create option
 		var option = document.createElement("option");
 		option.text = tweet.text;
-
-		// strip any quotes out of the tweet so they don't mess up our option
 		option.value = tweet.text.replace("\"", "'");
-
-		// add option to select
 		tweetsSelection.options.add(option);
     }
-	// make sure the top tweet is selected
 	tweetsSelection.selectedIndex = 0;
 }
 
@@ -160,3 +190,4 @@ function makeImage() {
 		window.open(canvas.toDataURL('image/png'), '_blank');
 	};
 }
+

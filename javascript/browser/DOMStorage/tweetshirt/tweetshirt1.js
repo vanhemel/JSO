@@ -87,7 +87,11 @@ function drawText(canvas, context) {
 
 	// draw the tweet!
 	selectObj = document.getElementById("tweets");
+<<<<<<< HEAD
 	var index = selectObj.selectedIndex;
+=======
+	index = selectObj.selectedIndex;
+>>>>>>> ee726d1779ef64a83edcf9b6392844567d95f587
 	var tweet = selectObj[index].value;
 	context.font = "italic 1.2em serif";
 	context.fillText(tweet, 30, 100);

@@ -1,15 +1,50 @@
 'use strict';
 
 window.onload = function() {
+	bgColor=document.getElementById("kleur1").value;
+	figColor=document.getElementById("kleur2").value;
+	textColor=document.getElementById("kleur3").value;
+	selectObj = document.getElementById("shape");
+	index = selectObj.selectedIndex;
+	shape = selectObj[index].value;
 	var button = document.getElementById("previewButton");
 	button.onclick = previewHandler;
 	var select = document.getElementById("shape");
 	select.onchange = colorPicker;
+	var button2 = document.getElementById("saveButton");
+	button2.onclick = saveContent;
+	var button3 = document.getElementById("reloadButton");
+	button3.onclick = reloadContent;
 
 	// Easter Egg ;-)
 	makeImage();
 }
 
+var bgColor;
+var figColor;
+var textColor;
+var selectObj;
+var index
+var shape;
+
+function saveContent(){
+	localStorage.setItem('bgColorOpslag', JSON.stringify(bgColor));
+	localStorage.setItem('figColorOpslag', JSON.stringify(figColor));
+	localStorage.setItem('textColorOpslag', JSON.stringify(textColor));
+	localStorage.setItem('shapeOpslag', JSON.stringify(shape));
+}
+
+function reloadContent(){
+	var temp = JSON.parse(localStorage.getItem('bgColorOpslag'));
+	if (temp != null) {bgColor=temp}
+	temp = JSON.parse(localStorage.getItem('figColorOpslag'));
+	if (temp != null) {figColor=temp}
+	temp = JSON.parse(localStorage.getItem('textColorOpslag'));
+	if (temp != null) {textColor=temp}
+	temp = JSON.parse(localStorage.getItem('shapeOpslag'));
+	if (temp != null) {shape=temp}
+	loadHandler();
+}
 
 function colorPicker(){
 	if (shape != "Neither"){
@@ -17,15 +52,47 @@ function colorPicker(){
 	}
 }
 
+function loadHandler() {
+	var canvas = document.getElementById("tshirtCanvas");
+	var context = canvas.getContext("2d");
+
+	//bgColor = document.getElementById("kleur1").value;
+	fillBackgroundColor(canvas, context);
+
+	/*var selectObj = document.getElementById("shape");
+	var index = selectObj.selectedIndex;
+	var shape = selectObj[index].value;*/
+
+	if (shape == "squares") {
+		for (var squares = 0; squares < 20; squares++) {
+			drawSquare(canvas, context);
+		}
+	}
+	else if (shape == "circles") {
+		for (var circles = 0; circles < 20; circles++) {
+			drawCircle(canvas, context);
+		}
+	}
+	drawText(canvas, context);
+	drawBird(canvas, context);
+}
+
+
 function previewHandler() {
 	var canvas = document.getElementById("tshirtCanvas");
 	var context = canvas.getContext("2d");
 
+	bgColor = document.getElementById("kleur1").value;
 	fillBackgroundColor(canvas, context);
 
-	var selectObj = document.getElementById("shape");
-	var index = selectObj.selectedIndex;
-	var shape = selectObj[index].value;
+	figColor=document.getElementById("kleur2").value;
+	textColor = document.getElementById("kleur3").value;
+	
+
+	selectObj = document.getElementById("shape");
+	index = selectObj.selectedIndex;
+	shape = selectObj[index].value;
+	
 	if (shape == "squares") {
 		for (var squares = 0; squares < 20; squares++) {
 			drawSquare(canvas, context);
@@ -41,7 +108,7 @@ function previewHandler() {
 }
 
 function fillBackgroundColor(canvas, context) {
-	var bgColor = document.getElementById("kleur1").value;
+	//bgColor = document.getElementById("kleur1").value;
 	context.fillStyle = bgColor;
 	context.fillRect(0, 0, canvas.width, canvas.height);
 }
@@ -52,7 +119,7 @@ function drawSquare(canvas, context) {
 	var x = Math.floor(Math.random() * canvas.width);
 	var y = Math.floor(Math.random() * canvas.height);
 
-	var figColor=document.getElementById("kleur2").value;
+	//figColor=document.getElementById("kleur2").value;
 	context.fillStyle = figColor;
 	context.fillRect(x, y, w, w);
 }
@@ -66,7 +133,7 @@ function drawCircle(canvas, context) {
 	context.beginPath();
 	context.arc(x, y, radius, 0, degreesToRadians(360), true);
 	
-	var figColor=document.getElementById("kleur2").value;
+	//figColor=document.getElementById("kleur2").value;
 	context.fillStyle = figColor;
 	context.fill();
 }
@@ -75,7 +142,7 @@ function drawCircle(canvas, context) {
 function drawText(canvas, context) {
 	var selectObj = document.getElementById("foregroundColor");
 	
-	var textColor = document.getElementById("kleur3").value;
+	//textColor = document.getElementById("kleur3").value;
 
 	context.fillStyle = textColor;
 	context.font = "bold 1em sans-serif";
@@ -107,7 +174,6 @@ function drawBird(canvas, context) {
 	twitterBird.onload = function() {
 		context.drawImage(twitterBird, 20, 120, 70, 70);
 	};
-
 }
 
 function degreesToRadians(degrees) {
