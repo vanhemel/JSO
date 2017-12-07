@@ -1,0 +1,137 @@
+<html>
+
+<head>
+    <title>oef 1 tot 7</title>
+    <script src="../xmlUtil.js"></script>
+    <script>
+        var doc1 = xmlDoc = loadXMLDoc("ploeg.xml");
+        var doc2 = xmlDoc = loadXMLDoc("oef2.xml");
+        var doc3 = xmlDoc = loadXMLDoc("oef4.xml");
+        var doc4 = xmlDoc = loadXMLDoc("oef5.xml");
+
+        function oef1() {
+            var aantal = doc1.documentElement.childElementCount;
+            window.alert("Het aantal spelers is: " + aantal);
+        }
+
+        function oef2() {
+            var aantal = doc2.documentElement.childElementCount;
+            window.alert("Het aantal werknemers is: " + aantal);
+        }
+
+        function oef3() {
+            var aantal = doc2.documentElement.childElementCount;
+            var somLoon = 0;
+            var loon = [];
+            for (i = 0; i < aantal; i++) {
+                loon.push(doc2.getElementsByTagName("werknemer")[i].getAttribute('loon'));
+            }
+            for (i = 0; i < aantal; i++) {
+                somLoon += parseFloat(loon[i]);
+            }
+            window.alert("De som van de lonen is: " + somLoon);
+        }
+
+        function oef4() {
+            var aantal = doc3.documentElement.childElementCount;
+            var somLoon = 0;
+            var loon = [];
+            for (i = 0; i < aantal; i++) {
+                loon.push(doc3.getElementsByTagName("werknemer")[i].getAttribute('loon'));
+            }
+            for (i = 0; i < aantal; i++) {
+                if (doc3.getElementsByTagName("werknemer")[i].getAttribute('valuta') == "BEF") {
+                    var temp = parseFloat(loon[i]) / 40.3399;
+                    loon[i] = temp;
+                }
+                somLoon += parseFloat(loon[i]);
+            }
+            window.alert("De som van de lonen is: " + somLoon);
+        }
+
+        function geefLoon(afdeling, filenaam) {
+            var aantalAfd1 = doc4.getElementById("magazijn").childElementCount;
+            var aantalAfd2 = doc4.getElementById("marketing").childElementCount;
+            var aantalArbeidersAfd2 = doc4.getElementById("marketing").getElementsByTagName("arbeider").length;
+            var loonAfd1 = [];
+            var loonAfd2 = [];
+            var somLoonAfd1 = 0;
+            var somLoonAfd2 = 0;
+
+            for (i = 0; i < aantalAfd1; i++) {
+                loonAfd1.push(doc4.getElementById("magazijn").children[i].getAttribute('loon'));
+            }
+            for (i = 0; i < aantalArbeidersAfd2; i++) {
+                loonAfd2.push(doc4.getElementById("marketing").getElementsByTagName("arbeider")[i].getAttribute('loon'));
+            }
+
+            for (i = 0; i < aantalAfd1; i++) {
+                somLoonAfd1 += parseFloat(loonAfd1[i]);
+            }
+            for (i = 0; i < aantalArbeidersAfd2; i++) {
+                somLoonAfd2 += parseFloat(loonAfd2[i]);
+            }
+            window.alert("Het loon van de magazijn-arbeiders is: " + somLoonAfd1 + "\nHet loon van de marketing-arbeiders is: " + somLoonAfd2);
+        }
+
+        function geefGemiddeldLoon(afdeling, filenaam) {
+            //var aantalAfd1 = doc4.getElementById("magazijn").childElementCount;
+            //var aantalAfd2 = doc4.getElementById("marketing").childElementCount;
+            var aantalArbeidersAfd1 = doc4.getElementById("magazijn").getElementsByTagName("arbeider").length;
+            var aantalArbeidersAfd2 = doc4.getElementById("marketing").getElementsByTagName("arbeider").length;
+            var loonAfd1 = [];
+            var loonAfd2 = [];
+            var somLoonAfd1 = 0;
+            var somLoonAfd2 = 0;
+
+            for (i = 0; i < aantalArbeidersAfd1; i++) {
+                loonAfd1.push(doc4.getElementById("magazijn").getElementsByTagName("arbeider")[i].getAttribute('loon'));
+            }
+            for (i = 0; i < aantalArbeidersAfd2; i++) {
+                loonAfd2.push(doc4.getElementById("marketing").getElementsByTagName("arbeider")[i].getAttribute('loon'));
+            }
+
+            for (i = 0; i < aantalArbeidersAfd1; i++) {
+                somLoonAfd1 += parseFloat(loonAfd1[i]);
+                var gemLoonAfd1=somLoonAfd1/aantalArbeidersAfd1;
+            }
+            for (i = 0; i < aantalArbeidersAfd2; i++) {
+                somLoonAfd2 += parseFloat(loonAfd2[i]);
+                var gemLoonAfd2=somLoonAfd2/aantalArbeidersAfd2;
+            }
+            window.alert("Het gemiddelde loon van de magazijn-arbeiders is: " + gemLoonAfd1 + "\nHet loon van de marketing-arbeiders is: " + gemLoonAfd2);
+        }
+
+        function init() {
+            var btn1 = document.getElementById("btn1");
+            btn1.onclick = oef1;
+            var btn2 = document.getElementById("btn2");
+            btn2.onclick = oef2;
+            var btn3 = document.getElementById("btn3");
+            btn3.onclick = oef3;
+            var btn4 = document.getElementById("btn4");
+            btn4.onclick = oef4;
+            var btn5 = document.getElementById("btn5");
+            btn5.onclick = geefLoon;
+            var btn6 = document.getElementById("btn6");
+            btn6.onclick = geefGemiddeldLoon;
+            var btn7 = document.getElementById("btn7");
+            btn7.onclick = oef7;
+        }
+        window.onload = init;
+    </script>
+</head>
+
+<body>
+    <form id="frm">
+        <input type="button" name="btn1" id="btn1" value="Oef1" />
+        <input type="button" name="btn2" id="btn2" value="Oef2" />
+        <input type="button" name="btn3" id="btn3" value="Oef3" />
+        <input type="button" name="btn4" id="btn4" value="Oef4" />
+        <input type="button" name="btn5" id="btn5" value="Oef5" />
+        <input type="button" name="btn6" id="btn6" value="Oef6" />
+        <input type="button" name="btn7" id="btn7" value="Oef7" />
+    </form>
+</body>
+
+</html>
