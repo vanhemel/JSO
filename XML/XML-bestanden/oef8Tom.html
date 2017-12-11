@@ -1,0 +1,61 @@
+<htmlVar>
+
+<head>
+    <title>oef 8 tot 9</title>
+    <script src="../xmlUtil.js"></script>
+    <script>
+
+        var doc = document.implementation.createDocument("", "", null);
+
+        function oef8() {
+            var htmlVar = doc.createElement("html");
+            doc.appendChild(htmlVar);
+            var headVar = doc.createElement("head");
+            htmlVar.appendChild(headVar);
+            var titleVar = doc.createElement("title");
+            headVar.appendChild(titleVar);
+            var titleTekstVar = doc.createTextNode("De titel");
+            titleVar.appendChild(titleTekstVar);
+
+            var bodyVar = doc.createElement("body");
+            htmlVar.appendChild(bodyVar);
+            var linkTekstVar = doc.createTextNode("De link:");
+            bodyVar.appendChild(linkTekstVar);
+            var linkVar = doc.createElement("a");
+            linkVar.setAttribute("href", "http://vdab.be");
+            bodyVar.appendChild(linkVar);
+            var linkVdabVar = doc.createTextNode("De VDAB");
+            linkVar.appendChild(linkVdabVar);
+
+            alert(doc.documentElement.outerHTML);
+        }
+
+        function oef9() {
+            var bodyVar = doc.querySelector("body");
+            var parVar= doc.createElement("p");
+            bodyVar.appendChild(parVar);
+            var parTekst = doc.createTextNode("De eerste paragraaf");
+            parVar.appendChild(parTekst);
+
+            alert(doc.documentElement.outerHTML);
+        }
+
+
+        function init() {
+            var btn8 = document.getElementById("btn8");
+            btn8.onclick = oef8;
+            var btn9 = document.getElementById("btn9");
+            btn9.onclick = oef9;
+        }
+        window.onload = init;
+    </script>
+</head>
+
+<body>
+    <form id="frm">
+        <input type="button" name="btn8" id="btn8" value="Oef8" />
+        <input type="button" name="btn9" id="btn9" value="Oef9" />
+    </form>
+</body>
+
+</htmlVar>

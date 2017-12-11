@@ -1,0 +1,34 @@
+<htmlVar>
+
+    <head>
+        <title>oef 10</title>
+        <script src="../xmlUtil.js"></script>
+        <script>
+
+            var doc = xmlDoc = loadXMLDoc("itemspuur.xml");
+
+            function oef10() {
+                var prijzen = doc.getElementsByTagName("prijs");
+                for(i=0;i<prijzen.length; i++){
+                    var temp= parseFloat(prijzen[i].innerHTML)+((parseFloat(prijzen[i].innerHTML)*5)/100);
+                    prijzen[i].textContent=temp;
+                }
+                alert(doc.documentElement.outerHTML)
+            }
+
+            
+            function init() {
+                var btn10 = document.getElementById("btn10");
+                btn10.onclick = oef10;
+            }
+            window.onload = init;
+        </script>
+    </head>
+
+    <body>
+        <form id="frm">
+            <input type="button" name="btn10" id="btn10" value="Oef10" />
+        </form>
+    </body>
+
+</htmlVar>
