@@ -32,6 +32,7 @@ app.get(['/*.htm*', '/*.css', '/scripts/*.js'], function (req, res) {
 
 app.get('/getHint.js', function (req, res) {
     console.log('request received');
+    console.log('querystring: ', req.query);
     console.log("Looking for names starting with %s", req.query.q);
     res.end(findHints(req.query.q));
 });
