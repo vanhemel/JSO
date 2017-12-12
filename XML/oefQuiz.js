@@ -21,7 +21,7 @@ function laadAtomen() {
     }
 }
 
-function laadTop3(){
+function laadTop3() {
     top3 = JSON.parse(localStorage.getItem("top3"));
     if (top3 == null) top3 = [];
 }
@@ -52,13 +52,13 @@ function verwerkAntwoord() {
     else {
         verwerkFoutAntwoord();
     }
-    toonVolgendAtoom();
     if (aantal == AANTALVRAGEN) {
         verwerkEindeQuiz();
     }
     else {
         document.getElementById("divScore").innerText =
             `Uw tijd: ${verstrekenTijd(startTijd, Date.now())}`;
+        toonVolgendAtoom();
     }
 }
 
@@ -74,7 +74,6 @@ function verwerkFoutAntwoord() {
 function verwerkEindeQuiz() {
     var eindTijd = Date.now();
     verstrekenTijd(startTijd, eindTijd);
-    document.getElementById("txtNaam").value = "";
     document.getElementById("btnOK").hidden = true;
     document.getElementById("btnStart").hidden = false;
     document.getElementById("divScore").innerText =
