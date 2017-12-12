@@ -1,0 +1,90 @@
+<htmlVar>
+
+    <head>
+        <title>oef 10</title>
+        <script src="../xmlUtil.js"></script>
+        <script>
+            var doc = xmlDoc = loadXMLDoc("allelements.xml");
+
+            var quizElementen = [];
+            var teller = 0;
+            var juisteAntwoorden = 0;
+
+            function storageInladen() {
+                var elementenArray = [];
+                var atoom = doc.querySelectorAll("ATOM");
+                document.getElementById("antw").value = "";
+
+                for (i = 0; i < atoom.length; i++) {
+                    var naam = atoom[i].querySelector("NAME");
+                    var symbool = atoom[i].querySelector("SYMBOL");
+                    elementenArray.push({
+                        index: i,
+                        naam: naam.textContent,
+                        symbool: symbool.textContent,
+                    })
+                }
+                for (i = 0; i < 10; i++) {
+                    var randomGetal = Math.floor((Math.random() * 100) + 1);
+                    var quizNaam = elementenArray[randomGetal].naam;
+                    var quizSymbool = elementenArray[randomGetal].symbool;
+                    quizElementen.push({
+                        naam: quizNaam,
+                        symbool: quizSymbool,
+                    })
+                }
+                //var opslagElementen = JSON.stringify(quizElementen);
+                //sessionStorage.setItem("doc", opslagElementen);
+                document.getElementById("vraag").value = quizElementen[teller].naam;
+                document.getElementById("start").disabled=true;
+                document.getElementById("controleer").disabled=false;
+            }
+
+            function controle() {
+                var antwSymbool = document.getElementById("antw").value;
+                var testNaam = document.getElementById("vraag").value;
+                for (i = 0; i < 10; i++) {
+                    if (quizElementen[i].naam == testNaam) {
+                        var testSymbool = quizElementen[i].symbool;
+                    }
+                }
+                document.getElementById("controleTekst").innerHTML = "";
+                if (antwSymbool == testSymbool) {
+                    document.getElementById("controleTekst").innerHTML = "juist";
+                    juisteAntwoorden++;
+                } else {
+                    document.getElementById("controleTekst").innerHTML = "fout";
+                }
+                teller++;
+                if (teller == 9) {
+                    document.getElementById("controleer").disabled=true;
+                }
+                document.getElementById("vraag").value = quizElementen[teller].naam;
+                document.getElementById("antw").value = "";
+            }
+
+            
+
+            function init() {
+                var start = document.getElementById("start");
+                start.addEventListener("click", storageInladen);
+                start.addEventListener("click", startTimer);
+                var controleer = document.getElementById("controleer");
+                controleer.addEventListener("click", controle);
+            }
+            window.onload = init;
+        </script>
+    </head>
+
+    <body>
+        <form id="frm">
+            <label>Naam:<input type="text" name="vraag" id="vraag" value="Naam" /></label>
+            <input type="button" name="controleer" id="controleer" value="controleer" disabled=true />
+            <label>Symbool:<input type="text" name="antw" id="antw" value="Symbool" /></label>
+            <input type="button" name="start" id="start" value="start" />
+        </form>
+        <p id="controleTekst">
+        </p>
+    </body>
+
+</htmlVar>

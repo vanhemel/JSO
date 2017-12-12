@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>XML files transformeren met XSLT</title>
+    <script src="XmlUtil.js"></script>
+    <script>
+        'use strict';
+
+        var XMLPATH = "XML-bestanden/";
+
+        function transform(xmlFile, xslFile) {
+            var xml = loadXMLDoc(XMLPATH + xmlFile);
+            var xsl = loadXMLDoc(XMLPATH + xslFile);
+            var xsltProcessor = new XSLTProcessor();
+            xsltProcessor.importStylesheet(xsl);
+            var resultDocument = xsltProcessor.transformToDocument(xml);
+            // afhankelijk van de output method in de stylesheet geeft transformToDocument
+            // een HTMLDocument (HTML DOM-tree) of een XMLDocument (XML DOM-tree) terug
+            document.getElementById("result").innerHTML = resultDocument.documentElement.outerHTML;
+        }
+
+        window.onload = function () {
+            document.getElementById("btnTransform").onclick = function () {
+                var xmlFile = document.getElementById("xmlFile").files[0].name;
+                var xslFile = document.getElementById("xslFile").files[0].name;
+                transform(xmlFile, xslFile);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <form>
+        <label for="xmlFile">xml-bestand: </label><input type="file" id="xmlFile"> <br>
+        <label for="xslFile">xsl(t)-bestand: </label><input type="file" id="xslFile"> <br>
+        <input type="button" id="btnTransform" value="Transform">
+    </form>
+    <div id="result">
+    </div>
+</body>
+
+</html>
