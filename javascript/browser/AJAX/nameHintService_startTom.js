@@ -10,7 +10,17 @@ var names = [
 
 function findHints(q) {
     var hint = "";
-    // TODO: return string with all names starting with q.  Separate different names by a comma.
+    for(i=0; i< names.length; i++){
+        naam=names[i];
+        var deeltje=naam.substr(0,q.length);
+        var deeltje2=deeltje.toLowerCase();
+        var q2= q.toLowerCase();
+
+        if (deeltje2==q2){
+            hint +=naam +", ";
+        }
+    }
+
     if (hint == ""){
         return "No suggestion found.";
     }
