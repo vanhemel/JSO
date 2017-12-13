@@ -30,14 +30,14 @@ function findHints(q) {
     }
 }
 
-/*
+
 // enable cross domain calls (CORS = cross origin resource sharing)
 app.all('/*', function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
-*/
+
 
 app.get(['/*.htm*', '/*.css', '/scripts/*.js'], function (req, res) {
     res.sendFile(path.join(__dirname + url.parse(req.url).pathname));
