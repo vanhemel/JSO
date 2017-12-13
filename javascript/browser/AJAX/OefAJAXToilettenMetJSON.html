@@ -13,12 +13,13 @@
 function showToilets() {
   var xhttp = new XMLHttpRequest();
   document.getElementById("txtHint").innerHTML = "de gegevens worden opgehaald ...";
-  /**/ xhttp.responseType = 'json';
+ /**/ xhttp.responseType = 'json';
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
         document.getElementById("txtHint").innerHTML = "";
         document.getElementById("theTable").innerHTML = "";
-        /**/var records = this.response.data;
+         /**/var records = this.response.data;
+       // var records = JSON.parse(this.responseText).data;
         for(var i=0; i < records.length; i++){
             addRow(records[i]);
         }
