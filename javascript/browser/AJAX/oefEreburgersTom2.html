@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ereburgers Brussel</title>
+    <script>
+
+        function dataOphalen(pUrl) {
+            if(document.getElementById("lijst")){
+                document.getElementById("lijst").innerHTML = "";
+            }
+            
+            var request = new XMLHttpRequest();
+            //request.open("GET", url);
+            request.open("GET", pUrl);
+            request.onload = function () {
+                if (request.status == 200) {
+                    var ereArray = JSON.parse(request.responseText).records;
+                    for (var i = 0; i < ereArray.length; i++) {
+                        var tr = document.createElement("tr");
+                        var td1 = document.createElement("td");
+                        var td2 = document.createElement("td");
+                        var td3 = document.createElement("td");
+                        var textnode1 = document.createTextNode(ereArray[i].fields.nom);
+                        var textnode2 = document.createTextNode(ereArray[i].fields.functie);
+                        var datum1 = ereArray[i].fields.date;
+                        var datum2 = new Date(datum1);
+                        var datum3 = datum2.toLocaleDateString();
+                        var textnode3 = document.createTextNode(datum3);
+                        td1.appendChild(textnode1);
+                        td2.appendChild(textnode2);
+                        td3.appendChild(textnode3);
+                        tr.appendChild(td1);
+                        tr.appendChild(td2);
+                        tr.appendChild(td3);
+                        document.getElementById("lijst").appendChild(tr);
+                    }
+                }
+            }
+            request.send();
+        }
+        function zoeken() {
+            var url = "http://opendata.brussel.be/api/records/1.0/search/?dataset=ereburgers1";
+            if(document.getElementById("zoekVeld").value){
+                url +="&q="+document.getElementById("zoekVeld").value;
+            }
+            dataOphalen(url);
+        }
+        function init() {
+            document.getElementById("zoekKnop").onclick = zoeken;
+        }
+        window.onload = init;
+    </script>
+</head>
+
+<body>
+
+    <table id="ereTabel" border="1">
+        <thead>
+            <tr>
+                <th>Naam</th>
+                <th>Functie</th>
+                <th>Datum</th>
+            </tr>
+        </thead>
+        <tbody id="lijst">
+        </tbody>
+    </table>
+    <form name="frm">
+        <input type="text" id="zoekVeld" />
+        <input type="button" id="zoekKnop" value="Zoek"/>
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Openbare Toiletten Antwerpen</title>
+    <script>
+        var xmlHttp = false;
+        function loadXMLHttpRequest() {
+            try {  // Firefox/Opera/Safari/IE7+
+                xmlHttp = new XMLHttpRequest();
+            }
+            catch (e) {
+                try { // IE5
+                    xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+                }
+                catch (e) {
+                    try { // IE6
+                        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    catch (e) {
+                        alert("Deze browser ondersteunt geen AJAX");
+                    }
+                }
+            }
+        }
+
+        function dataOphalen() {
+            if (xmlHttp) {
+                xmlHttp.open("GET", "http://datasets.antwerpen.be/v4/gis/openbaartoilet.xml");
+                xmlHttp.onreadystatechange = function () {
+                    if(document.getElementById("fout")){
+                        document.getElementById("fout").remove();
+                    }
+                    if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                        var xmlDoc = xmlHttp.responseXML;
+                        var omschrijving = xmlDoc.getElementsByTagName("omschrijving");
+                        var straat = xmlDoc.getElementsByTagName("straat");
+                        var huisnummer = xmlDoc.getElementsByTagName("huisnummer");
+                        var postcode = xmlDoc.getElementsByTagName("postcode");
+                        var district = xmlDoc.getElementsByTagName("district");
+
+                        var tabel = document.getElementById("tabelToilet");
+                        var rijen = document.getElementsByTagName("tr");
+                        while (rijen.length > 1) {
+                            tabel.children[0].removeChild(rijen[1]);
+                        }
+                        for (var i = 0; i < omschrijving.length; i++) {
+                            var tr = document.createElement("tr");
+                            var td1 = document.createElement("td");
+                            var td2 = document.createElement("td");
+                            var td3 = document.createElement("td");
+                            var td4 = document.createElement("td");
+                            var td5 = document.createElement("td");
+                            var textnode1 = document.createTextNode(omschrijving[i].textContent);
+                            var textnode2 = document.createTextNode(straat[i].textContent);
+                            var textnode3 = document.createTextNode(huisnummer[i].textContent);
+                            var textnode4 = document.createTextNode(postcode[i].textContent);
+                            var textnode5 = document.createTextNode(district[i].textContent);
+                            td1.appendChild(textnode1);
+                            td2.appendChild(textnode2);
+                            td3.appendChild(textnode3);
+                            td4.appendChild(textnode4);
+                            td5.appendChild(textnode5);
+                            tr.appendChild(td1);
+                            tr.appendChild(td2);
+                            tr.appendChild(td3);
+                            tr.appendChild(td4);
+                            tr.appendChild(td5);
+                            document.getElementById("tabelToilet").appendChild(tr);
+                        }
+                    } else {
+                        var div = document.createElement("div");
+                        div.setAttribute("id","fout");
+                        var textnode = document.createTextNode("Pagina aan het laden");
+                        div.appendChild(textnode);
+                        document.body.appendChild(div);
+                    }
+                }
+                xmlHttp.send();
+            }
+
+        }
+    </script>
+</head>
+
+<body onload="loadXMLHttpRequest()">
+    <input type="button" value="Haal XML op" onclick="dataOphalen()" />
+    <table id="tabelToilet" border="1">
+        <thead>
+            <tr>
+                <th>Omschrijving</th>
+                <th>straat</th>
+                <th>huisnummer</th>
+                <th>postcode</th>
+                <th>district</th>
+            </tr>
+        </thead>
+    </table>
+</body>
+
+</html>

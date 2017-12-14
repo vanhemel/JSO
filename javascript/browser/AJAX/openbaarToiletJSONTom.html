@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Openbare Toiletten Antwerpen</title>
+    <script>
+
+        function dataOphalen() {
+
+            var url = "http://datasets.antwerpen.be/v4/gis/openbaartoilet.json";
+            var request = new XMLHttpRequest();
+            request.open("GET", url);
+            request.onload = function () {
+                if (request.status == 200) {
+                    var toiletArray = JSON.parse(request.responseText).data;
+                    for (var i = 0; i < toiletArray.length; i++) {
+                        var tr = document.createElement("tr");
+                        var td1 = document.createElement("td");
+                        var td2 = document.createElement("td");
+                        var td3 = document.createElement("td");
+                        var td4 = document.createElement("td");
+                        var td5 = document.createElement("td");
+                        var textnode1 = document.createTextNode(toiletArray[i].omschrijving);
+                        var textnode2 = document.createTextNode(toiletArray[i].straat);
+                        var textnode3 = document.createTextNode(toiletArray[i].huisnummer);
+                        var textnode4 = document.createTextNode(toiletArray[i].postcode);
+                        var textnode5 = document.createTextNode(toiletArray[i].district);
+                        td1.appendChild(textnode1);
+                        td2.appendChild(textnode2);
+                        td3.appendChild(textnode3);
+                        td4.appendChild(textnode4);
+                        td5.appendChild(textnode5);
+                        tr.appendChild(td1);
+                        tr.appendChild(td2);
+                        tr.appendChild(td3);
+                        tr.appendChild(td4);
+                        tr.appendChild(td5);
+                        document.getElementById("tabelToilet").appendChild(tr);
+                    }
+                }
+            }
+
+            request.send();
+        }
+
+    </script>
+</head>
+
+<body>
+    <input type="button" value="Haal XML op" onclick="dataOphalen()" />
+    <table id="tabelToilet" border="1">
+        <thead>
+            <tr>
+                <th>Omschrijving</th>
+                <th>straat</th>
+                <th>huisnummer</th>
+                <th>postcode</th>
+                <th>district</th>
+            </tr>
+        </thead>
+    </table>
+</body>
+
+</html>
