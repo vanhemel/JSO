@@ -22,11 +22,7 @@
             table{
                 width:305px;
             }
-            div{
-                margin-top: 10px;
-                width:200px;
-                text-align: right;
-            }
+           
             table td{
                 width:33%;
             }
@@ -38,6 +34,7 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script>
         let producten=[];
+        let $tabel;
         $(function(){
             $(':button', '#frm').click(function(){
                 let naam = $('#naam').val();
@@ -46,7 +43,10 @@
                 zetProductInTabel(p);
                 producten.push(p);
                 berekenTotaal();
+                $('#naam').val('');
+                $('#prijs').val('');
             });
+            $tabel = $('#producten');
         });
         function berekenTotaal(){
             let sum = 0;
@@ -65,8 +65,8 @@
                 berekenTotaal();
             });
             $tr = $('<tr>').append($tdnaam).append($tdprijs).append($tdbutton);
-            $tabel = $('#producten');
-            $tabel.append($tr);
+            $laatste = $('#laatste');
+            $laatste.before($tr);
         }
         function Product(naam, prijs){
             this.naam = naam;
@@ -82,7 +82,8 @@
         <input type="number" id="prijs"/>
         <input type="button" value="Toevoegen"/>
     </form>
-    <table id="producten"></table>
-    <div>Totaalprijs: <span id="totaal">0</span></div>
+    <table id="producten">
+    <tr id="laatste"><td>Totaalprijs:</td><td id="totaal">0</td><td></td></tr>
+    </table>
 </body>
 </html>
