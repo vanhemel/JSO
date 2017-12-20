@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Google</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script>
+        var totaal = 0;
+        var index = 1;
+        function toevoegen() {
+            
+        }
+        $(function () {
+            //$('#btn').click(toevoegen);
+            var $tr = $("<tr>").attr('id',index);
+            var $td1 = $("<td>").text($('#naam').val());
+            var $td2 = $("<td>").text($('#prijs').val());
+            var $btn= $('<input type="button" value="verwijder"/>').click($(this).remove());
+            $('table').append($tr);
+            $tr.append($td1).append($td2).append($btn);
+            totaal += parseFloat($('#prijs').val());
+            $("#totaal").text(totaal);
+            index +=1;
+        }); 
+    </script>
+    <style>
+        /*  #frm {
+            display: grid;
+            grid-template-columns: 100px 200px 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            grid-template-areas:    "tekst"
+                                    "knop";
+            grid-column-gap: 10px;
+        }
+        #btn {
+            grid-area: 4 / 2 / 5 / 3;
+        }
+        .lab{
+            text-align:right;
+        }*/
+    </style>
+</head>
+
+<body>
+    <form id="frm">
+        <label class="lab">Naam: </label>
+        <input type="text" name="naam" id="naam" />
+        <br/>
+        <label class="lab">Prijs: </label>
+        <input type="text" name="prijs" id="prijs" />
+        <br/>
+        <input type="button" name="btn" id="btn" value="Toevoegen" />
+    </form>
+</body>
+<table>
+</table>
+<label>Totaal: <span id="totaal"></span></label>
+</html>
