@@ -26,8 +26,11 @@
             table td{
                 width:33%;
             }
-            table td:nth-child(2){
+            table td:nth-child(2), table th:nth-child(2){
                 text-align: right;
+            }
+            .verborgen{
+                display:none;
             }
         </style>
     
@@ -49,6 +52,11 @@
             $tabel = $('#producten');
         });
         function berekenTotaal(){
+            if (producten.length >0){
+                $('#producten').removeClass('verborgen')
+            }else{
+                $('#producten').addClass('verborgen');
+            }
             let sum = 0;
             producten.forEach(element => {
                 sum += element.prijs;
@@ -61,7 +69,7 @@
             $tdbutton = $('<td>').html('<button>Verwijderen</button>');
             $('button', $tdbutton).click({rij:producten.length}, function(evt){
                 producten.splice(evt.data.rij,1);
-                $($('tr', $tabel)[evt.data.rij]).remove();
+                $($('tr', $tabel)[evt.data.rij+1]).remove(); //rekening houden met <tr><th>
                 berekenTotaal();
             });
             $tr = $('<tr>').append($tdnaam).append($tdprijs).append($tdbutton);
@@ -82,7 +90,8 @@
         <input type="number" id="prijs"/>
         <input type="button" value="Toevoegen"/>
     </form>
-    <table id="producten">
+    <table id="producten" class="verborgen">
+        <tr><th>Naam</th><th>Prijs</th><th></th></tr>
     <tr id="laatste"><td>Totaalprijs:</td><td id="totaal">0</td><td></td></tr>
     </table>
 </body>
