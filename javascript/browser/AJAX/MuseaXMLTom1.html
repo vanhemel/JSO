@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Musea Antwerpen en Brussel</title>
+    <script>
+        var xmlHttp = false;
+        function loadXMLHttpRequest() {
+            try {  // Firefox/Opera/Safari/IE7+
+                xmlHttp = new XMLHttpRequest();
+            }
+            catch (e) {
+                try { // IE5
+                    xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+                }
+                catch (e) {
+                    try { // IE6
+                        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    catch (e) {
+                        alert("Deze browser ondersteunt geen AJAX");
+                    }
+                }
+            }
+        }
+
+        function dataOphalenAnt() {
+            if (xmlHttp) {
+                xmlHttp.open("GET", "http://datasets.antwerpen.be/v4/gis/museumoverzicht.xml");
+                xmlHttp.onreadystatechange = function () {
+                    if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                        var xmlDoc = xmlHttp.responseXML;
+                        var stad = "Antwerpen";
+                        var naam = xmlDoc.getElementsByTagName("naam");
+                        var straat = xmlDoc.getElementsByTagName("straat")
+                        var huisnummer = xmlDoc.getElementsByTagName("huisnummer");
+                        var breedteGr = xmlDoc.getElementsByTagName("point_lat");
+                        var lengteGr = xmlDoc.getElementsByTagName("point_lng");
+
+                        for (var i = 0; i < naam.length; i++) {
+                            var tr = document.createElement("tr");
+                            var td1 = document.createElement("td");
+                            var td2 = document.createElement("td");
+                            var td3 = document.createElement("td");
+                            var textnode1 = document.createTextNode(stad);
+                            var textnode2 = document.createTextNode(naam[i].textContent);
+                            var adres = straat[i].textContent+" "+huisnummer[i].textContent;
+                            var textnode3 = document.createTextNode(adres);
+                            td1.appendChild(textnode1);
+                            td2.appendChild(textnode2);
+                            td3.appendChild(textnode3);
+                            tr.appendChild(td1);
+                            tr.appendChild(td2);
+                            tr.appendChild(td3);
+                            document.getElementById("lijst").appendChild(tr);
+                        }
+                    } 
+                }
+                xmlHttp.send();
+            }
+        }
+        function dataOphalenBrus() {
+            var url = "http://opendata.brussel.be/api/records/1.0/search/?dataset=musea-in-brussel&rows=50";
+            var request = new XMLHttpRequest();
+            request.open("GET", url);
+            request.onload = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var MuseaArray = JSON.parse(request.responseText).records;
+                    for (var i = 0; i < MuseaArray.length; i++) {
+                        var stad = "Brussel";
+                        var tr = document.createElement("tr");
+                        var td1 = document.createElement("td");
+                        var td2 = document.createElement("td");
+                        var td3 = document.createElement("td");
+                        var textnode1 = document.createTextNode(stad);
+                        var textnode2 = document.createTextNode(MuseaArray[i].fields.naam_van_het_museum);
+                        var textnode3 = document.createTextNode(MuseaArray[i].fields.adres);
+                        td1.appendChild(textnode1);
+                        td2.appendChild(textnode2);
+                        td3.appendChild(textnode3);
+                        tr.appendChild(td1);
+                        tr.appendChild(td2);
+                        tr.appendChild(td3);
+                        document.getElementById("lijst").appendChild(tr);
+                    }
+                }
+            }
+            request.send();
+        }
+
+
+
+
+        function init() {
+            loadXMLHttpRequest();
+            dataOphalenAnt();
+            dataOphalenBrus();
+        }
+        window.onload = init;
+    </script>
+</head>
+
+<body>
+    <table id="tabelMusea" border="1">
+        <thead>
+            <tr>
+                <th>Stad</th>
+                <th>Musea</th>
+                <th>Adres</th>
+            </tr>
+        </thead>
+        <tbody id="lijst">
+        </tbody>
+    </table>
+</body>
+
+</html>
