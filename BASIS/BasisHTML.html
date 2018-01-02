@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BasisHTML</title>
+        <meta http-equiv="author" content="Tom Van Hemel" />
+        <meta name="description" content="Basis HTML-elementen" />
+        <meta name="robots" content="nofollow" /> <!--Sites that link to this page should not be shown by search engines-->
+        <meta http-equiv="pragma" content="no-cache" /> <!--To prevent the browser to store the page in the cache-->
+    </head>
+    <body>
+    <h1>Links</h1>
+        <div>To other sites in same window:  <a href="https://www.w3schools.com/">w3schools</a>  </div>
+        <div>To other sites in new window:    <a href="https://developer.mozilla.org/nl/" target="_blank">MDN</a>  </div>
+        <div>To other page on same sites:  <a href="index.html">Home</a>  </div>
+        <div>Starts up the user's email program:  <a href="mailto:jon@example.org">Email Jon</a>  </div>
+        <div>To onther place (id of element) on same page:  <a href="#bottom">Pagina-einde</a>  </div>
+        <div>To onther place (id of element) on different page:  <a href="http:/www.htmlandcssbookcom/#bottom">bottom of css books</a> </div>
+    <h1>Images</h1>
+        <figure>
+            <img src="images/FrontEnd.png" alt="FrondEnd logos" title="The logos of FrontEnd languages" width="150" height="100" />
+            <br />
+            <figcaption>The logos of FrontEnd languages.</figcaption>
+        </figure>
+    <h1>Tables</h1>
+        <table border="1" bgcolor="#efefef">
+            <tr>
+                <th></th>
+                <th>9am</th>
+                <th>10am</th>
+                <th>11am</th>
+                <th>12am</th>
+            </tr>
+            <tr>
+                <th>Monday</th>
+                <td colspan="2">Geography</td>
+                <td>Math</td>
+                <td rowspan="2">Art</td>
+            </tr>
+            <tr>
+                <th>Tuesday</th>
+                <td colspan="3">Gym</td>
+            </tr>
+        </table>
+        <br/>
+        <table border="1" bgcolor="#efefef">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Income</th>
+                    <th>Expenditure</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>1st January</th>
+                    <td>250</td>
+                    <td>36</td>
+                </tr>
+                <tr>
+                    <th>2nd January</th>
+                    <td>285</td>
+                    <td>48</td>
+             </tr>
+            <!-- additional rows as above -->
+                <tr>
+                    <th>31st January</th>
+                    <td>129</td>
+                    <td>64</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td>7824</td>
+                    <td>1241</td>
+                </tr>
+            </tfoot>
+        </table>
+    <h1>Forms</h1>
+    <h2>Adding text</h2>
+        <form action="http://www.example.com/login.php" id="frm">
+            <label>Username:<input type="text" name="username" id="username" size="15" maxlength="30" /></label>
+        </form>
+        <form action="http://www.example.com/login.php" id="frm">          
+            <label>Password: <input type="password" name="password" id="password" size="15" maxlength="30" /></label>
+        </form>
+        <form action="http://www.example.com/comments.php" id="frm">
+            <p>What did you think of this gig?</p> 
+            <textarea name="comments" id="comments" cols="20" rows="4">Enter your comments...</textarea>
+        </form>
+    <h2>Making choices</h2> 
+        <form action="http://www.example.com/profile.php" id="frm">
+            <p>Please select your favorite genre:
+                <br />
+                <input type="radio" name="genre" value="rock" checked="checked" /> Rock
+                <input type="radio" name="genre" value="pop" /> Pop
+                <input type="radio" name="genre" value="jazz" /> Jazz
+            </p>
+        </form>
+        <form action="http://www.example.com/profile.php" id="frm">
+            <p>Please select your favorite music service(s):
+                <br />
+                <input type="checkbox" name="service" value="itunes" checked="checked" /> iTunes
+                <input type="checkbox" name="service" value="lastfm" /> Last.fm
+                <input type="checkbox" name="service" value="spotify" /> Spotify
+            </p>
+        </form>
+        <form action="http://www.example.com/profile.php">
+            <p>What device do you listen to music on?</p>
+            <select name="devices">
+                <option value="ipod">iPod</option>
+                <option value="radio">Radio</option>
+                <option value="computer">Computer</option>
+            </select>
+        </form>
+        <form action="http://www.example.com/profile.php">
+            <p>Do you play any of the following instruments? (You can select more than one option by holding down control on a PC or command key on a Mac while selecting different options.)</p>
+            <select name="instruments" size="3" multiple="multiple">
+                <option value="guitar" selected="selected">Guitar</option>
+                <option value="drums">Drums</option>
+                <option value="keyboard" selected="selected">Keyboard</option>
+                <option value="bass">Bass</option>
+            </select>
+        </form>
+    <h2>Buttons</h2> 
+        <form action="http://www.example.org/subscribe.php">
+            <p>Gewone knop:</p>
+            <input type="button" name="btn1" id="btn1" value="knop"/>
+        </form>
+        <form action="http://www.example.org/subscribe.php">
+            <input type="text" name="email" />
+            <input type="image" src="images/ImgButton.png" width="60" height="20" />
+        </form>
+        <form action="http://www.example.com/subscribe.php">
+            <p>Subscribe to our email list:</p>
+            <input type="text" name="email" />
+            <input type="submit" name="subscribe" value="Subscribe" />
+        </form>
+        <form action="http://www.example.com/upload.php" method="post">
+            <p>Upload your song in MP3 format:</p>
+            <input type="file" name="user-song" /><br />
+            <input type="submit" value="Upload" />
+        </form>
+    <h2>Form Validation</h2> 
+        <form action="http://www.example.com/login/" method="post">
+            <fieldset id="subscr">
+                <legend>Invullen verplicht</legend>
+                <label for="username">Username:</label>
+                <input type="text" name="username" required="required" /></title><br />
+                <label for="password">Password:</label>
+                <input type="password" name="password" required="required" />
+                <input type="submit" value="Submit" />
+            </fieldset>
+        </form>
+        <form action="http://www.example.com/bookings/" method="post">
+            <label for="username">Departure date:</label>
+            <input type="date" name="depart" />
+            <input type="submit" value="Submit" />
+        </form>
+        <form action="http://www.example.org/subscribe.php">
+            <p>Please enter your email address:</p>
+            <input type="email" name="email" />
+            <input type="submit" value="Submit" />
+        </form>
+        <form action="http://www.example.org/profile.php">
+            <p>Please enter your website address:</p>
+            <input type="url" name="website" />
+            <input type="submit" value="Submit" />
+        </form>
+        <form action="http://www.example.org/search.php">
+            <p>Search queries:</p>
+            <input type="search" name="search" />
+            <input type="submit" value="Search" />
+        </form>
+    <h1>Maps and other i-frames</h1>
+    <iframe width="200" height="150" src="http://maps.google.co.uk/maps?q=moma+new+york&amp;output=embed"></iframe>
+    <h1>Video</h1>
+    </body>
+</html> 

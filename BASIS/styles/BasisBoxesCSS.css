@@ -1,0 +1,89 @@
+/*
+selectors (p238)
+* {}                Universal selector: Targets all elements on the page
+h1, h2, h3 {}       Type selector: Targets the <h1>, <h2> and <h3> elements
+p.note {}           Class selector: Targets only <p> elements whose class attribute has a value of note
+#introduction {}    Id selector: Targets the element whose id attribute has a value of introduction
+li>a {}             Child selector: Targets any <a> elements that are children of an <li> element (but not other <a> elements in the page)
+p a {}              Decendant selector: Targets any <a> elements that sit inside a <p> element, even if there are other elements nested between them
+h1+p {}             Adjacent Sibling selectors: Targets the first <p> element after any <h1> element (but not other <p> elements)
+h1~p {}             General Sibling selector: If you had two <p> elements that are siblings of an <h1> element,this rule would apply to both
+
+p[class]            Targets any <p> element with an attribute called class
+p[class="dog"]      Targets any <p> element with an attribute called class whose value is dog
+p[class~="dog"]     Targets any <p> element with an attribute called class whose value is a list of space-separated words, one of which is dog
+p[attr^"d"]         Targets any <p> element with an attribute whose value begins with the letter "d"
+p[attr*"do"]        Targets any <p> element with an attribute whose value contains the letters "do"
+p[attr$"g"]         Targets any <p> element with an attribute whose value ends with the letter "g"
+*/
+
+#box1 {
+    height: 200px;
+    width: 200px;
+    background-color: greenyellow;}
+p.box1 {
+    height: 75%;
+    width: 75%;
+    background-color:skyblue;}
+
+td.description {
+    min-width: 300px;
+    max-width: 450px;
+    text-align: left;
+    padding: 5px;
+    margin: 0px;}
+
+h2, p {
+    width: 300px;
+    font-size: 90%;
+    line-height: 1.2em;}
+h2 {
+    color: #0088dd;
+    border-bottom: 1px solid #0088dd;}
+p.list {
+    min-height: 10px;
+    max-height: 30px;}
+#one {overflow: hidden;}
+#two {overflow: scroll;}
+
+p.first {border-style:solid; 
+        border-width: 2px;
+        border-color: #0088dd;
+        padding: 10px;}
+p.second {border-style:solid;
+    border-width: thick;
+    margin: 20px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;}
+p.third {border-style:solid;
+    border-width: 1px 4px 12px 4px;
+    border-color: #bbbbaa #111111 #ee3e80 #0088dd;
+    margin: 10px auto 10px auto}
+
+p.one {border-style: solid;}
+p.two {border-style: dotted;}
+p.three {border-style: dashed;}
+p.four {border-style: double;}
+p.five {border-style: groove;}
+p.six {border-style: ridge;}
+p.seven {border-style: inset;}
+p.eight {border-style: outset;}
+
+p.border {width: 250px;
+    border: 3px dotted #0088dd;
+    -moz-box-shadow: 5px 5px 5px 5px #777777;
+    -webkit-box-shadow: 5px 5px 5px 5px #777777;
+    box-shadow: 5px 5px 5px 5px #777777;}
+
+ul[class=display]>li {
+    display: inline;
+    margin-right: 10px;}
+ul[class=display]>li.coming-soon {
+    display: none;} 
+    
+ul[class=visible]>li {
+    display: inline;
+    margin-right: 10px;}
+ul[class=visible]>li.coming-soon {
+    visibility: hidden;}

@@ -1,0 +1,42 @@
+/*
+selectors (p238)
+* {}                Universal selector: Targets all elements on the page
+h1, h2, h3 {}       Type selector: Targets the <h1>, <h2> and <h3> elements
+p.note {}           Class selector: Targets only <p> elements whose class attribute has a value of note
+#introduction {}    Id selector: Targets the element whose id attribute has a value of introduction
+li>a {}             Child selector: Targets any <a> elements that are children of an <li> element (but not other <a> elements in the page)
+p a {}              Decendant selector: Targets any <a> elements that sit inside a <p> element, even if there are other elements nested between them
+h1+p {}             Adjacent Sibling selectors: Targets the first <p> element after any <h1> element (but not other <p> elements)
+h1~p {}             General Sibling selector: If you had two <p> elements that are siblings of an <h1> element,this rule would apply to both
+
+p[class]            Targets any <p> element with an attribute called class
+p[class="dog"]      Targets any <p> element with an attribute called class whose value is dog
+p[class~="dog"]     Targets any <p> element with an attribute called class whose value is a list of space-separated words, one of which is dog
+p[attr^"d"]         Targets any <p> element with an attribute whose value begins with the letter "d"
+p[attr*"do"]        Targets any <p> element with an attribute whose value contains the letters "do"
+p[attr$"g"]         Targets any <p> element with an attribute whose value ends with the letter "g"
+*/
+
+ul {list-style-type: disc;} /*none, circle, square*/
+ol {list-style-type: decimal-leading-zero ;} /*decimal, lower-alpha, upper-alpha, lower-roman, upper-roman*/
+
+ul.star {
+    list-style-image: url("images/star.png");}
+ul.star>li {margin: 10px 0px 0px 0px;}
+
+/*ul.illuminations {list-style-position: outside;}
+ul.season {list-style-position: inside;}*/
+
+ul.list {list-style: inside circle; width: 300px;}
+ul.list>li {margin: 10px 0px 0px 0px;}
+
+td {
+    background-color: #0088dd;
+    padding: 15px;
+    border: 2px solid #000000;}
+
+td.even {background-color: #efefef;}
+
+table.one {empty-cells: show;} /*table.two {empty-cells: hide;}  inherit*/
+
+table.one {border-spacing: 5px 15px;} /*table.two {border-collapse: collapse;}  separate*/
