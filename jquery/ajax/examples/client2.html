@@ -67,6 +67,19 @@
             $('#btndelete').click(function(){
                deleteZangeres(3);
             });
+            $('#btnpost').click(function(){
+               createZangeres(4, 'Josje', 'Huisman');
+            });
+            $('#btnToevoegen').click(function(){
+                console.log("op toevoegen geklikt");
+                let id = $('#inputId').val();
+                let voornaam = $('#inputVoornaam').val();
+                let achternaam = $('#inputAchternaam').val();
+                createZangeres(id, voornaam, achternaam);
+                $('#inputId').val('');
+                $('#inputVoornaam').val('');
+                $('#inputAchternaam').val('');
+            })
         })
         function deleteZangeres(id){
             $.ajax('http://localhost:8080/namen?id='+id,{
@@ -78,6 +91,16 @@
                     console.log(msg);
                 });
         }
+        function createZangeres(id, voornaam, achternaam){
+            $.ajax('http://localhost:8080/namen',{
+                    method: 'POST',
+                    data: JSON.stringify({id: id, voornaam: voornaam, achternaam: achternaam})
+                }).done(function(data){
+                    console.dir(data);
+                }).fail(function(obj, err, msg){
+                    console.log(msg);
+                })
+        }
     </script>
 </head>
 <body>
@@ -87,6 +110,7 @@
         <button type="button" id='btngetid'>Get data via id</button>
         <input type="number" min="0" id="inputid"/>
     </form>
+    <button id='btnpost'>Create zangeres</button>
     <div id="zangeres">
         <span>Id:</span><span id="zangeresid"></span>
         <span>Voornaam:</span><span id="zangeresvoornaam"></span>
@@ -103,8 +127,16 @@
             </tr>
         </thead>
         <tbody>
-
+            
         </tbody>
+        <tfoot>
+                <tr>
+                        <td><input type="number" id="inputId"/></td>
+                        <td><input type="text" id="inputVoornaam"></td>
+                        <td><input type="text" id="inputAchternaam"></td>
+                        <td><button type="button" id="btnToevoegen">Toevoegen</button></td>
+                </tr>
+        </tfoot>
     </table>
 </body>
 </html>
