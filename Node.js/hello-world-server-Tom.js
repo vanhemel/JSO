@@ -8,5 +8,5 @@ http.createServer(function handler(req, res) {
     
     // Send the response body
     res.end('Hello World\n');
-}).listen(1337, '192.168.23.104');
-console.log('Server running at http://192.168.23.104:1337/');
+}).listen(1337, '127.0.0.1');
+console.log('Server running at http://127.0.0.1:1337/');
