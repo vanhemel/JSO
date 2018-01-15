@@ -7,6 +7,8 @@
 
 var mongoClient = require('mongodb').MongoClient;
 
+// zie ook http://mongodb.github.io/node-mongodb-native/3.0/quick-start/quick-start/
+
 // Connection URL
 var url = 'mongodb://localhost:27017';
 
