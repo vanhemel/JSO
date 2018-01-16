@@ -21,9 +21,8 @@ function getRecords(callback) {
 		} else {
 			callback(null, rows);
 		}
+		connection.end();
 	});
-
-	connection.end();
 }
 
 // enable cross domain calls (CORS = cross origin resource sharing)
