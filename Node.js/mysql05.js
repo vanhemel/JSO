@@ -22,9 +22,8 @@ function getRecords(callback) {
 		} else {
 			callback(null, rows);
 		}
+		connection.end();
 	});
-
-	connection.end();
 }
 
 var http = require('http');
