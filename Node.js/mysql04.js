@@ -23,8 +23,8 @@ function updateRecord(row, callback) {
 			} else {
 				callback(null, result);
 			}
+			connection.end();
 		});
-	connection.end();
 }
 
 var row = ['Grote Vliegenzwam', 'Smurfenstad', '997']; 
