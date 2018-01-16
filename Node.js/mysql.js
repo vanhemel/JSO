@@ -19,7 +19,6 @@ connection.query('SELECT * from planten', function(err, rows, fields) {
   }
   else{
     console.log('Error while performing query.');
-	}
+  }
+  connection.end();
 });
-
-connection.end();
