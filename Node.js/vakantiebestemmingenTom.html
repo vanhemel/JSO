@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BasisHTML</title>
+        <meta http-equiv="author" content="Tom Van Hemel" />
+        <meta name="description" content="Basis HTML-elementen" />
+        <meta name="robots" content="nofollow" /> <!--Sites that link to this page should not be shown by search engines-->
+        <meta http-equiv="pragma" content="no-cache" /> <!--To prevent the browser to store the page in the cache-->
+    </head>
+    <body>
+    <h1>Geef de informatie over uw favoriete reisbestemming in</h1>
+        <form action="http://127.0.0.1:8081/process_post" method="post" id="frm">
+            <label>naam:<input type="text" name="naam" id="naam" size="15" maxlength="30" /></label>
+            <p>geslacht:
+                <br />
+                <input type="radio" name="gesl" value="m" checked="checked" /> mannelijk
+                <input type="radio" name="gesl" value="vr" /> vrouwelijk
+            </p>
+             <p>bestemming:</p>
+            <select name='best'>
+                <option >De zee</option>
+                <option>De bergen</option>
+                <option>De zon</option>
+            </select>
+            <p>
+                <input type="checkbox" name="lid" value="lid" />lid
+            </p>
+            <input type="submit" name="reg" value="Registreer" />
+        </form>
+        
+    
