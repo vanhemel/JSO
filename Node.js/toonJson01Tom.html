@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>plantenlijst</title>
+    <script>
+
+        function dataOphalen() {
+            var url = "http://localhost:1337/planten.json";
+            var request = new XMLHttpRequest();
+            request.open("GET", url);
+            request.onload = function () {
+                if (request.status == 200) {
+                    var planten = JSON.parse(request.responseText);
+                    for (var i = 0; i < planten.length; i++) {
+                        var li = document.createElement("li");
+                        var textnode = document.createTextNode(planten[i].PLANTENNAAM);
+                        li.appendChild(textnode);
+                        document.getElementById('lijst').appendChild(li);
+                    }
+                }
+            }
+            request.send();
+        }
+        window.onload = dataOphalen;
+
+    </script>
+</head>
+
+<body>
+    <ul id='lijst'>
+
+    </ul>
+</body>
+
+</html>

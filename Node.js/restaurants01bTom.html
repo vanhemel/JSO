@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JQuery Ajax client</title>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+
+        function toonlijst() {
+            $.ajax('http://localhost:8888/restaurants', {
+                method: 'GET',
+                dataType: 'json',
+            }).done(function (data) {
+                let $tbody = $('tbody', '#tabel');
+                $tbody.empty();
+                for (let i = 0; i < data.length; i++) {
+
+                    console.log(data[i]);
+                    let $rij = $('<tr>');
+                    let $tdNaam = $('<td>').text(data[i].name);
+                    $rij.append ($tdNaam);
+                    let $tdAdres = $('<td>').text(data[i].address);
+                    $rij.append($tdAdres);
+                    let $tdBuurt = $('<td>').text(data[i].borough);
+                    $rij.append ($tdBuurt);
+                    let $tdKeuken = $('<td>').text(data[i].cuisine);
+                    $rij.append ($tdKeuken);
+                                        
+                    $tbody.append($rij);
+                }
+            })
+        }
+        function init() {
+            toonlijst();
+        }
+        window.onload = init;
+    </script>
+</head>
+
+<body>
+    <table id='tabel'>
+        <thead>
+            <tr>
+                <th>naam</th>
+                <th>adres</th>
+                <th>buurt</th>
+                <th>keuken</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</body>
+
+</html>
