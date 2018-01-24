@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>oefening NodeJS - MongoDB (1)</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
+<body>
+    <h1>Overzicht restaurants</h1>
+    <div id="melding"></div>
+    <form>
+        <select id="keuzelijst">
+        </select>
+        <input type="button" name="btn1" id="btn1" value="Zoek" />
+    </form>
+    <table id='restoTable'></table>
+</body>
+<script>
+    var velden = ['name', 'cuisine', 'borough'];
+    var veldenKeuken = ['cuisine'];
+
+    $(document).ready(function () {
+        $('#melding').html("Even geduld aub. De restaurantgegevens worden opgehaald...");
+        $.getJSON("http://localhost:8888/restaurants/keukens", function (docs) {
+            $('#melding').html("");
+            $.each(docs, (i, restaurant) => {
+                $('#keuzelijst').append(maakSelect(restaurant, veldenKeuken));
+            });
+        });
+    });
+
+    function maakSelect(restaurant, veldenKeuken) {
+        var result = "<option>" + restaurant + "</option>";
+        return result;
+    }
+
+
+    $('#btn1').click(function () {
+        let $tbody = $('tbody', '#restoTable');
+        $tbody.empty();
+        var e = document.getElementById("keuzelijst");
+        var keuken = e.options[e.selectedIndex].value;
+        $.getJSON("http://localhost:8888/restaurants/keukens/" + keuken, function (docs) {
+            $('#melding').html("");
+            $.each(docs, (i, restaurant) => {
+                $('#restoTable').append(maakRijString(restaurant, velden));
+            });
+        });
+    });
+
+    function maakRijString(restaurant, velden) {
+        var result = "<tr>";
+        $.each(velden, (i, veldnaam) => {
+            result += "<td>" + restaurant[veldnaam] + "</td>";
+        });
+        result += "</tr>";
+        return result;
+    }
+
+
+</script>
+
+</html>

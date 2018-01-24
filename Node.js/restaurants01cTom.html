@@ -8,30 +8,24 @@
     <title>JQuery Ajax client</title>
     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script>
-
+        var velden = ['name', 'cuisine', 'borough'];
         function toonlijst() {
             $.ajax('http://localhost:8888/restaurants', {
                 method: 'GET',
                 dataType: 'json',
-            }).done(function (data) {
+            }).done(function (restaurant, velden) {
                 let $tbody = $('tbody', '#tabel');
                 $tbody.empty();
-                for (let i = 0; i < data.length; i++) {
-                    
-                    let $rij = $('<tr>');
-                    let $tdNaam = $('<td>').text(data[i].name);
-                    $rij.append ($tdNaam);
-                    let $tdAdres = $('<td>').text(data[i].address);
-                    $rij.append($tdAdres);
-                    let $tdBuurt = $('<td>').text(data[i].borough);
-                    $rij.append ($tdBuurt);
-                    let $tdKeuken = $('<td>').text(data[i].cuisine);
-                    $rij.append ($tdKeuken);
-                                        
-                    $tbody.append($rij);
-                }
+                var result = "<tr>";
+                $.each(velden, (i, veldnaam) => {
+                    result += "<td>" + restaurant[veldnaam] + "</td>";
+                    result += "</tr>";
+                    $tbody.append(result);
+                });
             })
         }
+
+
         function init() {
             toonlijst();
         }
