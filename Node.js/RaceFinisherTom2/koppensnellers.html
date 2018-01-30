@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="jquery.idTabs.min.js"></script>
+    <title>Koppensnellers</title>
+</head>
+
+<body>
+    <h1>Deelnemerslijst</h1>
+    <table id='runners'></table>
+
+    <h2>Deelnemer toevoegen:</h2>
+    <form action="http://127.0.0.1:7111/addRunner" method="post" id="frm">
+        <label>Voornaam:
+            <input type="text" name="txtFirstName" id="txtFirstName" size="15" maxlength="30" />
+        </label>
+    </br>
+        <label>Achternaam:
+            <input type="text" name="txtLastName" id="txtLastName" size="15" maxlength="30" />
+        </label>
+    </br>
+        <label>Geslacht:<select name="txtGender">
+            <option value="m">Man</option>
+            <option value="v">Vrouw</option>
+        </select></label>
+    </br>
+        <label>Aankomst tijd:
+            <input type="text" name="txtHours" id="txtHours" size="15" maxlength="30" />
+            (Uren)
+            <input type="text" name="txtMinutes" id="txtMinutes" size="15" maxlength="30" />
+            (Minuten)
+        </label>
+    </br>
+        <input type="submit" name="btn1" id="btn1" value="Toevoegen"/>
+    </form>
+</body>
+<script>
+    $(document).ready(gegevensOphalen());
+
+    setInterval(gegevensOphalen, 5000);
+
+    function gegevensOphalen() {
+        $.getJSON("http://127.0.0.1:7111/koppesnellers", function (docs) {
+            $('#runners').empty();
+            $.each(docs, (i) => {
+                $('#runners').append(maakRijString(docs[i]));
+            });
+        });
+    };
+
+    function maakRijString(deelnemer) {
+        console.dir(deelnemer);
+        var result = "<tr>";
+        result += "<td> Naam: " + deelnemer.voornaam + " " + deelnemer.naam + " - Tijd: " + deelnemer.uren + ":" + deelnemer.minuten + "</td>";
+        result += "</tr>";
+        return result;
+    }
+
+</script>
+
+</html>

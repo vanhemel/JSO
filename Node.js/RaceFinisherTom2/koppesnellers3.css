@@ -1,0 +1,51 @@
+
+body{
+    background-color:rgb(207, 255, 197);
+}
+
+#container {
+    width:600px;
+    margin-top:80px; 
+    margin-left:330px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    background-color:rgb(162, 245, 143);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+.idTabs { 
+    border: none;
+    background-color: #f1f1f1;
+}
+
+.tabLink {
+    background-color: inherit;
+    float: left;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    padding: 12px 14px;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tabLink:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tabLink.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabContent {
+    display: none;
+    padding: 6px 12px;
+    margin-top: 15px;
+    margin-left: 30px;
+    margin-bottom: 15px;
+    border-top: none;
+} 

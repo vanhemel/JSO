@@ -14,7 +14,7 @@
 </body>
 <script>
     $(document).ready(function () {
-        $.getJSON("http://127.0.0.1:7111/koppesnellers.html", function (docs) {
+        $.getJSON("http://127.0.0.1:7111/koppesnellers", function (docs) {
             $.each(docs, (i) => {
                 $('#runners').append(maakRijString( docs[i]));
             });
