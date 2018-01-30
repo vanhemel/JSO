@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <title>Koppensnellers</title>
+</head>
+
+<body>
+    <h1>Deelnemerslijst</h1>
+    <table id='runners'></table>
+</body>
+<script>
+    $(document).ready(function () {
+        $.getJSON("http://127.0.0.1:7111/koppesnellers.html", function (docs) {
+            $.each(docs, (i) => {
+                $('#runners').append(maakRijString( docs[i]));
+            });
+        });
+    });
+
+    function maakRijString(deelnemer) {
+        console.dir (deelnemer);
+        var result = "<tr>";  
+              result += "<td> Naam: "+deelnemer.voornaam+" "+deelnemer.naam+" - Tijd: "+deelnemer.uren+":"+deelnemer.minuten+"</td>" ;
+           result += "</tr>";
+        return result;
+    }
+
+</script>
+</html>

@@ -1,0 +1,17 @@
+
+{   "deelnemer1":{"naam": "Stock",
+    "voornaam": "Poll",
+    "gender": "m",
+	"uren": 2,
+	"minuten": 30},
+	"deelnemer2":{"naam": "De Spons",
+    "voornaam": "Fons",
+    "gender": "m",
+	"uren": 2,
+    "minuten": 15},
+    "deelnemer3":{"naam": "Van Anus",
+    "voornaam": "Eufrazie",
+    "gender": "v",
+	"uren": 2,
+	"minuten": 00}
+}
