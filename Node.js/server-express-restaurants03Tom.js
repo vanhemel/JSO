@@ -36,7 +36,7 @@ function verwerkRequestVoorRestaurantsKeuken(request, response) {
         var db = client.db('test');
         var collection = db.collection('restaurants');
         collection.distinct("cuisine", function (err, docs) {
-            console.log("Restaurant document(s) found");
+            console.log("Cuisines found");
             response.send(JSON.stringify(docs));
             client.close();
         });

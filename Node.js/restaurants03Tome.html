@@ -31,9 +31,10 @@
     });
 
     function maakSelect(restaurant, veldenKeuken) {
-        var result = "<option>" + restaurant + "</option>";
+        var result = "<option value='"+encodeURIComponent(restaurant)+"'>" + restaurant + "</option>";
         return result;
     }
+
 
 
     $('#btn1').click(function () {
@@ -41,6 +42,7 @@
         $tbody.empty();
         var e = document.getElementById("keuzelijst");
         var keuken = e.options[e.selectedIndex].value;
+        $('#melding').html("Even geduld aub. De restaurantgegevens worden opgehaald...");
         $.getJSON("http://localhost:8888/restaurants/keukens/" + keuken, function (docs) {
             $('#melding').html("");
             $.each(docs, (i, restaurant) => {
