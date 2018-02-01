@@ -4,7 +4,7 @@ class Lint {
         this.lengte = lengte;   
     }
     knippen(lintDeel: number, aantalDelen:number =1): void{
-        if (this.lengte > lintDeel*aantalDelen ) {
+        if (this.lengte >= lintDeel*aantalDelen ) {
             this.lengte -= lintDeel*aantalDelen;
         } else {
             throw new Error ("Het lint is te kort.")
