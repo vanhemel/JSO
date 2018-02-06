@@ -1,9 +1,8 @@
-/* abstract method */
 
 abstract class Figuur {
     constructor(public kleur: string, public soort: string) { }
-    abstract get omtrek(); 
-    abstract get oppervlakte(); 
+    abstract get omtrek() :number; 
+    abstract get oppervlakte() :number; 
 }
 
 class Cirkel extends Figuur {
@@ -11,7 +10,6 @@ class Cirkel extends Figuur {
     get omtrek(){
         let result= (2*this.straal)*Math.PI;
         return result;
-        //return this.omtrek;
     }
     
     get oppervlakte(){
