@@ -1,20 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+
 
 import { AppComponent } from './app.component';
-import { VbDatabindingComponent } from './voorbeelden/vbdatabinding/vbdatabinding.component';
+import { Vb00Component } from './vb00/vb00.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    VbDatabindingComponent,
+    Vb00Component
   ],
   imports: [
-    BrowserModule,
-    FormsModule
+    BrowserModule
   ],
   providers: [],
-  bootstrap: [VbDatabindingComponent]
+  bootstrap: [Vb00Component]
 })
 export class AppModule { }
