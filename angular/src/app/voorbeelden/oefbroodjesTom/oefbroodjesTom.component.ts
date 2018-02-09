@@ -12,7 +12,7 @@ import {Bestelling} from './oefbroodjesTom';
 
 export class oefbroodjesTomComponent implements OnInit {
   broodje:Broodje;
-  aantalBroodjes:number=0;
+  aantalBroodjes:number=1;
 
   broodjes: Broodje[] = [
     new Broodje("Kaas", 2.80 ),
@@ -36,10 +36,10 @@ bestellijnen: BestelLijn[] = [];
   }
 
   Totaal():number{
-    let totaal=0;
+    let totaal:number =0;
     console.log("aantal br ", this.bestellijnen.length)
     console.dir(this.bestellijnen);
-    for (let i=0; this.bestellijnen.length; i++){
+    for (let i=0; i<this.bestellijnen.length; i++){
       totaal += (this.bestellijnen[i].aantal*this.bestellijnen[i].broodje.prijs);
     }
     return totaal;

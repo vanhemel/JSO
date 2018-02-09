@@ -19,7 +19,7 @@
       </tr>
       <tr *ngFor="let bl of bestellijnen">
           <td >{{bl.broodje.naam}}</td>
-          <td >{{bl.broodje.prijs}}</td>
+          <td >{{bl.broodje.prijs | currency:'EUR:2'}}</td>
           <td >{{bl.aantal}}</td>
       </tr>
   </table>

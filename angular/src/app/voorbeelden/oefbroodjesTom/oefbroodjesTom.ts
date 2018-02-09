@@ -1,5 +1,5 @@
 export class Broodje {
-    private naam: string;
+    public naam: string;
     public prijs: number;
     constructor(naam: string, prijs: number) {
         this.naam = naam;
@@ -17,7 +17,7 @@ export class BestelLijn {
 }   
 
 export class Bestelling {
-    private bestellijnen: BestelLijn[];
+    public bestellijnen: BestelLijn[]=[];
     constructor(bestellijnen: BestelLijn[]) {
         this.bestellijnen = bestellijnen;
     }
