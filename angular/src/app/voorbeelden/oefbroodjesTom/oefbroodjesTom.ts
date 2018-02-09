@@ -8,8 +8,8 @@ export class Broodje {
 }
 
 export class BestelLijn {
-    private broodje: Broodje;
-    private aantal: number;
+    public broodje: Broodje;
+    public aantal: number;
     constructor(broodje: Broodje, aantal: number) {
         this.broodje = broodje;
         this.aantal = aantal;

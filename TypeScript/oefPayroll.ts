@@ -27,7 +27,7 @@ class HourlyEmployee extends Employee {
         if (this.hoursWorked <= 40)  // no overtime
             return this.hourlyWage * this.hoursWorked;
         else
-            return 40 * this.hoursWorked + (this.hoursWorked - 40) * this.hourlyWage * 1.5;
+            return 40 * this.hourlyWage + (this.hoursWorked - 40) * this.hourlyWage * 1.5;
     }
     toString(): string {
         return super.toString() + "\thourlyWage: " + this.hoursWorked +
