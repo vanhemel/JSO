@@ -1,0 +1,29 @@
+<h1>Broodjes Oefening</h1>
+
+<form name="frm">
+  <label>type:
+    <select [(ngModel)]="broodje" name="keuzelijst">
+      <option *ngFor="let br of broodjes" [ngValue]="br">{{ br.naam }}</option>
+    </select>
+  </label>
+  <label>Aantal:
+    <input type="number" [(ngModel)]="aantal" name="aantal" id="aantal" size="15" maxlength="30" />
+  </label>
+  <input type="button" (click)="Bestellen()" name="btn1" id="btn1" value="Bestellen" />
+
+  <table border="1" bgcolor="#efefef" *ngIf="bestellijnen.length > 0">
+      <tr>
+          <th>naam</th>
+          <th>prijs</th>
+          <th>aantal</th>
+      </tr>
+      <tr *ngFor="let bl of bestellijnen">
+          <td >{{bl.broodje.naam}}</td>
+          <td >{{bl.broodje.prijs}}</td>
+          <td >{{bl.aantal}}</td>
+      </tr>
+  </table>
+
+  <p name="totaal"> De totaalprijs is {{Totaal()}}</p>
+
+</form>

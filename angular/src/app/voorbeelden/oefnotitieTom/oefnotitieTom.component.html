@@ -1,0 +1,15 @@
+<form>
+  <h1>Oefnotitie</h1>
+  <form id="frm">
+    <textarea name="notitie" id="notitie" [(ngModel)]="notitie" maxlength="100"></textarea>
+    <br/>
+    <input type="button" (click)="Bewaren()" name="btn1" id="btn1" value="Bewaar" [disabled]="buttonsDisable()"/>
+    <input type="button" (click)="Wissen()" name="btn2" id="btn2" value="Wis" [disabled]="buttonsDisable()"/>
+  </form>
+
+  <p>
+    Aantal beschikbare karakters:
+    <span>{{aantalKarakters()}}</span>
+  </p>
+
+</form>

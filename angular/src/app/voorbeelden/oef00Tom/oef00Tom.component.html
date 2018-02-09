@@ -1,0 +1,14 @@
+<form>
+  <h1>Oef00</h1>
+  <label>Aantal:
+    <input type="number" name="aantal" id="aantal" [(ngModel)]="aantal"  size="15" maxlength="30" />
+  </label>
+  <br/>
+  <label>Eenheidsprijs:
+    <input type="number" name="prijs" id="prijs" [(ngModel)]="prijs"  size="15" maxlength="30" />
+  </label>
+  <p>
+    Totaal:<span >{{totaalberekenen()}}</span>
+  </p>
+
+</form>

@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./vbfor.component.css']
 })
 export class VbForComponent implements OnInit {
+  naam:string;
+
   piraten = ["Jan", "Piet", "Joris", "Korneel"];
   constructor() { }
 
   ngOnInit() {
   }
 
+  Toevoegen(): void{
+  this.piraten.push(this.naam)
+  }
 }

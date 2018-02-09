@@ -1,5 +1,11 @@
 <h1>ngFor</h1>
 <p>ngFor voegt een element toe aan de DOM-tree voor elk element in een lijst</p>
+<form>
+<label>Naam:
+  <input type="text" [(ngModel)]="naam" name="naam" id="naam" size="15" maxlength="30" />
+  <input type="button" (click)="Toevoegen()" name="btn1" id="btn1" value="Toevoegen"/>
+</label>
+</form>
 <h2>Piraten</h2>
 <ul *ngIf="piraten.length > 0">
   <li  *ngFor="let piraat of piraten">{{ piraat }}</li>
