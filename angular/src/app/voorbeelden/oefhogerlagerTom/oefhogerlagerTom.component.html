@@ -1,0 +1,13 @@
+<h1>Hoger Lager Oefening</h1>
+
+<form name="frm">
+  <label>Uw gok (1-100):
+    <input type="number" [(ngModel)]="gok" name="gokje" id="gokje" size="15" maxlength="30" />
+  </label>
+  <input type="button" (click)="doeGok()" name="btn1" id="btn1" value="gok" />
+  <input type="button" (click)="hogerlager.reset()" name="btn2" id="btn2" value="opnieuw" />
+
+  <p> Melding: {{melding}}</p>
+  <p> Aantal beurten: {{aantalBeurten}}</p>
+
+</form>
