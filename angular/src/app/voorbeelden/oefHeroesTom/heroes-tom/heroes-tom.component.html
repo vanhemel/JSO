@@ -1,0 +1,8 @@
+<h1 [innerHTML]="myhero.naam"></h1>
+
+<label>id: <span [innerHTML]="myhero.id"></span></label>
+<form>
+<label>naam:<input type="text" name="naam" [(ngModel)]="myhero.naam"/></label>
+<input type="checkbox" name="beschikbaar" [(ngModel)]="myhero.beschikbaar"/> beschikbaar
+</form>
+

@@ -17,9 +17,14 @@ import { VbroutingReqparamComponent } from './voorbeelden/vbrouting/vbrouting-re
 import { PageNotFoundComponent } from './voorbeelden/vbrouting/page-not-found.component';
 import { Vbrouting0Component } from './voorbeelden/vbrouting/vbrouting0.component';
 import { VbroutingComponent } from './voorbeelden/vbrouting/vbrouting.component';
+import { OefcurcTomcomponent } from './voorbeelden/oefcurcTom/oefcurcTom.component';
+import { currencyServiceTom } from './voorbeelden/oefcurcTom/oefcurcTom.service';
+import { VbRoutingModule } from './voorbeelden/vbrouting/vbrouting.module';
+import { HeroesTomComponent } from './voorbeelden/oefHeroesTom/heroes-tom/heroes-tom.component';
+import { HeroListTomComponent } from './voorbeelden/oefHeroesTom/hero-list-tom/hero-list-tom.component';
 // TODO: alle componenten die in deze module gedefinieerd zijn importere
   // zie vbrouting.module.ts
-const appRoutes: Routes = [
+/*const appRoutes: Routes = [
   {
     path: 'vb01',
     component: VbDatabindingComponent
@@ -27,6 +32,10 @@ const appRoutes: Routes = [
   {
     path: 'vb02',
     component: VbIfComponent
+  },
+  {
+    path: 'oefcurcTom',
+    component: OefcurcTomcomponent
   },
   {
     path: 'routing/:id',
@@ -44,7 +53,7 @@ const appRoutes: Routes = [
     path: '**', 
     component: PageNotFoundComponent 
   } 
-];
+];*/
 
 @NgModule({
   declarations: [
@@ -54,18 +63,23 @@ const appRoutes: Routes = [
     PageNotFoundComponent,
     Vbrouting0Component,
     VbroutingComponent,
-    VbroutingReqparamComponent
+    VbroutingReqparamComponent,
+    OefcurcTomcomponent,
+    HeroesTomComponent,
+    HeroListTomComponent
+
     // TODO: alle componenten die in deze module gedefinieerd zijn hier importeren
   ],
   imports: [
     BrowserModule,
     FormsModule,  //  nodig om 2 way binding te kunnen doen
     HttpClientModule,
-    RouterModule.forRoot( appRoutes ),
+    //RouterModule.forRoot( appRoutes ),
+    VbRoutingModule
   ],
-  providers: [CurrencyService],
+  providers: [currencyServiceTom],
   // TODO: in bootstrap array (enkel) alle componenten opsommen
   // die horen bij user defined tags die in index.html gebruikt worden
-  bootstrap: [Vbrouting0Component]
+  bootstrap: [HeroListTomComponent]
 })
 export class AppModule { }
