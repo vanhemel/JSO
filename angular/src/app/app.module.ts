@@ -13,7 +13,7 @@ import { VbScholenService02 } from './voorbeelden/vbservice/vbservice02';
 import { VbServiceComponent03 } from './voorbeelden/vbservice/vbservice03.component';
 import { VbScholenService03 } from './voorbeelden/vbservice/vbservice03';
 import { OefcurcTomcomponent } from './voorbeelden/oefcurcTom/oefcurcTom.component';
-import { VbScholenServiceTom } from './voorbeelden/oefcurcTom/oefcurcTom';
+import { currencyServiceTom } from './voorbeelden/oefcurcTom/oefcurcTom.service';
 // TODO: alle componenten die in deze module gedefinieerd zijn importeren
 
 @NgModule({
@@ -32,7 +32,7 @@ import { VbScholenServiceTom } from './voorbeelden/oefcurcTom/oefcurcTom';
     FormsModule,  //  nodig om 2 way binding te kunnen doen
     HttpClientModule
   ],
-  providers: [VbScholenServiceTom],
+  providers: [currencyServiceTom],
   // TODO: in bootstrap array (enkel) alle componenten opsommen
   // die horen bij user defined tags die in index.html gebruikt worden
   bootstrap: [OefcurcTomcomponent]

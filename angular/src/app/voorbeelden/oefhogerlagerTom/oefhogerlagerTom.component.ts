@@ -11,8 +11,8 @@ import { Hogerlager } from './oefhogerlagerTom';
 
 export class oefhogerlagerTomComponent implements OnInit {
   hogerlager: Hogerlager = new Hogerlager();
-  gok : number=0;
-  melding: string ="";
+  gok: number = 0;
+  melding: string = "";
 
   constructor() {
   }
@@ -20,8 +20,8 @@ export class oefhogerlagerTomComponent implements OnInit {
   ngOnInit() {
   }
 
-   doeGok(): void {
-    this.melding= this.hogerlager.verwerkGok(this.gok);
+  doeGok(): void {
+    this.melding = this.hogerlager.verwerkGok(this.gok);
   }
 
   get aantalBeurten(): number {
