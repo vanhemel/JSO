@@ -8,6 +8,9 @@ import { OefNotitieComponent } from './oefeningen/oefnotitie/oefnotitie.componen
 import { VbForuitbrComponent } from './voorbeelden/vbfor/vbforuitbr.component';
 import { OefBroodjesComponent } from './oefeningen/oefbroodjes/oefbroodjes.component';
 import { OefHogerLagerComponent } from './oefeningen/oefhogerlager/oefhogerlager.component';
+import { OefCurrencyconvertorComponent } from './oefeningen/oefcurrencyconvertor/oefcurrencyconvertor.component';
+import { CurrencyService } from './oefeningen/oefcurrencyconvertor/currency.service';
+import { HttpClientModule } from '@angular/common/http';
 // TODO: alle componenten die in deze module gedefinieerd zijn importeren
 
 @NgModule({
@@ -17,16 +20,18 @@ import { OefHogerLagerComponent } from './oefeningen/oefhogerlager/oefhogerlager
     OefNotitieComponent,
     VbForuitbrComponent,
     OefBroodjesComponent,
-    OefHogerLagerComponent
+    OefHogerLagerComponent,
+    OefCurrencyconvertorComponent
     // TODO: alle componenten die in deze module gedefinieerd zijn hier importeren
   ],
   imports: [
     BrowserModule,
     FormsModule,  //  nodig om 2 way binding te kunnen doen
+    HttpClientModule
   ],
-  providers: [],
+  providers: [CurrencyService],
   // TODO: in bootstrap array (enkel) alle componenten opsommen
   // die horen bij user defined tags die in index.html gebruikt worden
-  bootstrap: [OefHogerLagerComponent]
+  bootstrap: [OefCurrencyconvertorComponent]
 })
 export class AppModule { }
