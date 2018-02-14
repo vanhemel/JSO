@@ -10,38 +10,45 @@
         /*$(document).ready(function(){ //voor oudere mensen
             console.log($('h1').text());
         });*/
-        /*$(function(){ //aangeraden voor jonge, hippe mensen
+        $(function(){ //aangeraden voor jonge, hippe mensen
             console.log($('h1').text());
-        });*/
-        /*$(() => { //aangeraden voor jonge, hippe mensen die willen opscheppen
+        });
+        /*$(() => { //aangeraden voor jonge, hippere mensen
           console.log($('h1').text());
         });*/
-        /*$(function(){
+        $(function(){
+            $('h1').click(function(){
+                console.log($(this));
+            });
+        });
+        $(function(){
             $('#btn').click(function(){ //de functie wordt uitgevoerd wanneer er geklikt wordt op de knop
                 alert('Wie heb ik aan de lijn, hallo, hallo?');
             });
-        });*/
-        /*$(function(){  //we kunnen klikken op eender welk element
+        });
+        $(function(){  //we kunnen klikken op eender welk element
             $('h1').click(function(){
                 $(this).text('Aaaauw'); //this verwijst naar het element zelf
             });
-        });*/
-        /*$(function(){
+        });
+        $(function(){
             $(':submit', '#form').click(function(evt){
                 evt.preventDefault();// we willen geen form submit
                 let naam = $('#txtNaam').val();
                 let $li = $('<li>').text(naam);
                 $('#namen').append($li);
+                $('#txtNaam').val('');
             });
-        });*/
-        /*$(function(){
+        });
+        $(function(){
             $('input[type!=submit]', '#form').mouseenter(function(){
                 $(this).css('background-color', 'red');
             });
             $('input[type!=submit]', '#form').mouseleave(function(){
                 $(this).css('background-color', 'white');
             });
-        });*/
+        });
+        
     </script>
 </head>
 <body>
