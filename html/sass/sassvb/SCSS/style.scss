@@ -1,0 +1,27 @@
+$pagina_breedte: 80%;
+$main_breedte: 80%;
+body{
+background-color: hsl(180, 20%, 30%);
+color : hsl(0,10%, 70%);
+}
+.wrapper{
+margin: 0 auto;
+width: $pagina_breedte;
+min-width: 768px;
+display: flex;
+flex-wrap: wrap;
+}
+main{
+    background-color: hsl(180,100%, 40%);
+    color: hsl(0,80%,50%);
+    box-sizing: border-box;
+    padding: 10px 10px 20px;
+    width: $main_breedte;
+    }
+aside{
+    color: hsl(180,100%, 70%);
+    background-color: hsl(0,90%, 70%);
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100% - $main_breedte;
+    }

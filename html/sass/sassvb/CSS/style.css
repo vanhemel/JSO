@@ -1,0 +1,32 @@
+/* line 3, scss/style.scss */
+body {
+  background-color: #3d5c5c;
+  color: #baabab;
+}
+
+/* line 7, scss/style.scss */
+.wrapper {
+  margin: 0 auto;
+  width: 80%;
+  min-width: 768px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* line 14, scss/style.scss */
+main {
+  background-color: #00cccc;
+  color: #e61a1a;
+  box-sizing: border-box;
+  padding: 10px 10px 20px;
+  width: 80%;
+}
+
+/* line 21, scss/style.scss */
+aside {
+  color: #66ffff;
+  background-color: #f76e6e;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 20%;
+}

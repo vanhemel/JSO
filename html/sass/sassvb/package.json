@@ -1,0 +1,15 @@
+{
+  "name": "sassvb",
+  "version": "0.0.1",
+  "description": "Sass voorbeelden",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:sass": "node-sass scss/ -o css"
+  },
+  "author": "Tom",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.7.2"
+  }
+}
