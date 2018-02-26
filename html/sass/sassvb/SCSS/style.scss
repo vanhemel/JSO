@@ -1,8 +1,41 @@
 $pagina_breedte: 80%;
 $main_breedte: 80%;
+$base:#910000;
+$light-base: lighten($base,50%);
+$dark-base:darken($base,50%);
+
+@import 'mixins';
+
+header{
+    background-color: hsl(180,100%, 40%);
+    color: hsl(0,80%,50%);
+    margin: 5px auto;
+    width: $pagina_breedte;
+    .menu{
+        list-style: none;
+        margin: 0px;
+        overflow: hidden;
+        li{
+        float:left;
+        padding: 15px;
+        &:after{
+            @include arrow(right,2px,black)
+        }
+        }
+        }
+        }
+a {
+            padding: 2px;
+            cursor: pointer;
+            &:hover{
+            color: hsl(180,100%, 70%);
+            background-color: hsl(0,90%, 70%);
+            }
+}
 body{
 background-color: hsl(180, 20%, 30%);
 color : hsl(0,10%, 70%);
+@include sample;
 }
 .wrapper{
 margin: 0 auto;
@@ -12,11 +45,15 @@ display: flex;
 flex-wrap: wrap;
 }
 main{
-    background-color: hsl(180,100%, 40%);
-    color: hsl(0,80%,50%);
+    /*background-color: hsl(180,100%, 40%);
+    color: hsl(0,80%,50%);*/
+    
     box-sizing: border-box;
     padding: 10px 10px 20px;
     width: $main_breedte;
+    background-color: $dark-base;
+    color: $light-base;
+    @include gray-border(5px,solid,$light-base);
     }
 aside{
     color: hsl(180,100%, 70%);
@@ -25,3 +62,5 @@ aside{
     padding: 10px;
     width: 100% - $main_breedte;
     }
+
+   
