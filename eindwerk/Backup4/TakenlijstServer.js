@@ -30,7 +30,7 @@ app.all('/*', function (req, res, next) {
 app.get(['/categorienamen'], function (req, res) {
     var connection = maakConnectie();
     connection.query(
-        "SELECT CATNAME,CATID FROM CATEGORIE ORDER BY CATNAME ;",
+        "SELECT CATNAME FROM CATEGORIE ORDER BY CATNAME ;",
         function (err, rows, fields) {
             if (!err) {
                 var result = [];
@@ -97,6 +97,7 @@ app.post('/addCat', function (req, res) {
 
 app.post('/addTaak', function (req, res) {
     var identifiers = [];
+    //var categorienaam= req.body.catLijst2;
     identifiers.push(req.body.catLijst2);
     identifiers.push(req.body.taakTitel);
     identifiers.push(req.body.taakOmschr);
@@ -128,6 +129,7 @@ app.get(['/catWeergeven'], function (req, res) {
                 for(var i=0; i<rows.length; i++){
                         result.push({CATID: rows[i].CATID, CATNAME: rows[i].CATNAME, PARENTCATIDC: rows[i].PARENTCATIDC, PARENTCATIDT: rows[i].PARENTCATIDT, TITEL: rows[i].TITEL, TAAKOMSCHR: rows[i].TAAKOMSCHR });
                 }
+                console.log(result);
                 res.send({status: 200, result: result});
             }
             else {

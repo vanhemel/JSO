@@ -30,7 +30,7 @@ app.all('/*', function (req, res, next) {
 app.get(['/categorienamen'], function (req, res) {
     var connection = maakConnectie();
     connection.query(
-        "SELECT CATNAME,CATID FROM CATEGORIE ORDER BY CATNAME ;",
+        "SELECT CATNAME FROM CATEGORIE ORDER BY CATNAME ;",
         function (err, rows, fields) {
             if (!err) {
                 var result = [];
@@ -97,12 +97,13 @@ app.post('/addCat', function (req, res) {
 
 app.post('/addTaak', function (req, res) {
     var identifiers = [];
+   // var categorienaam= req.body.catLijst2;
     identifiers.push(req.body.catLijst2);
     identifiers.push(req.body.taakTitel);
     identifiers.push(req.body.taakOmschr);
     var connection = maakConnectie();
     connection.query(
-        "INSERT INTO taak (PARENTCATIDT, TITEL, TAAKOMSCHR) VALUES (?,?,?)", identifiers,
+        "INSERT INTO taak (CATID, TITEL, TAAKOMSCHR) VALUES (?,?,?)", identifiers,
         function (err, rows, fields) {
             if (!err) {
                 var result = JSON.stringify(rows);
@@ -116,28 +117,5 @@ app.post('/addTaak', function (req, res) {
             connection.end();
         });
 });
-
-
-app.get(['/catWeergeven'], function (req, res) {
-    var connection = maakConnectie();
-    connection.query(
-        "SELECT c.CATID, c.CATNAME, s.PARENTCATIDC, t.PARENTCATIDT, t.TITEL, t.TAAKOMSCHR FROM CATEGORIE c LEFT OUTER JOIN SUBCATEGORIE s ON s.SUBCATID = c.CATID LEFT OUTER JOIN TAAK t ON t.PARENTCATIDT = c.CATID ORDER BY CATNAME;",
-        function (err, rows, fields) {
-            if (!err) {
-                var result = [];
-                for(var i=0; i<rows.length; i++){
-                        result.push({CATID: rows[i].CATID, CATNAME: rows[i].CATNAME, PARENTCATIDC: rows[i].PARENTCATIDC, PARENTCATIDT: rows[i].PARENTCATIDT, TITEL: rows[i].TITEL, TAAKOMSCHR: rows[i].TAAKOMSCHR });
-                }
-                res.send({status: 200, result: result});
-            }
-            else {
-                console.log('Error while performing query.');
-                res.send('Error while performing query.')
-                console.log(err.message)
-            }
-            connection.end();
-        });
-});
-
 
 app.listen(2001);
