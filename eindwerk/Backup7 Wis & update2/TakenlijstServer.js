@@ -62,7 +62,7 @@ app.post('/addCat', function (req, res) {
     if (req.body.catLijst1 != "Hoofdcategorie") {
         sqlStmt += "INSERT INTO subcategorie VALUES(LAST_INSERT_ID(),?);"
     }
-    else {
+    else{
         sqlStmt += "INSERT INTO subcategorie VALUES(LAST_INSERT_ID(),null);"
     }
 
@@ -101,12 +101,10 @@ app.post('/addTaak', function (req, res) {
     var identifiers = [];
     identifiers.push(req.body.catLijst2);
     identifiers.push(req.body.taakTitel);
-    identifiers.push(req.body.startdat);
-    identifiers.push(req.body.einddat);
     identifiers.push(req.body.taakOmschr);
     var connection = maakConnectie();
     connection.query(
-        "INSERT INTO taak (PARENTCATIDT, TITEL, STARTDAT, EINDDAT, TAAKOMSCHR) VALUES (?,?,?,?,?)", identifiers,
+        "INSERT INTO taak (PARENTCATIDT, TITEL, TAAKOMSCHR) VALUES (?,?,?)", identifiers,
         function (err, rows, fields) {
             if (!err) {
                 var result = JSON.stringify(rows);
@@ -124,12 +122,12 @@ app.post('/addTaak', function (req, res) {
 app.get(['/catWeergeven'], function (req, res) {
     var connection = maakConnectie();
     connection.query(
-        "SELECT c.ID, c.CATID, c.CATNAME, s.PARENTCATIDC, t.TAAKID, t.PARENTCATIDT, t.TITEL, t.STARTDAT, t.EINDDAT, t.TAAKOMSCHR FROM CATEGORIE c LEFT OUTER JOIN SUBCATEGORIE s ON s.SUBCATID = c.CATID LEFT OUTER JOIN TAAK t ON t.PARENTCATIDT = c.CATID ORDER BY ID,CATNAME;",
+        "SELECT c.ID, c.CATID, c.CATNAME, s.PARENTCATIDC, t.TAAKID, t.PARENTCATIDT, t.TITEL, t.TAAKOMSCHR FROM CATEGORIE c LEFT OUTER JOIN SUBCATEGORIE s ON s.SUBCATID = c.CATID LEFT OUTER JOIN TAAK t ON t.PARENTCATIDT = c.CATID ORDER BY ID,CATNAME;",
         function (err, rows, fields) {
             if (!err) {
                 var result = [];
                 for (var i = 0; i < rows.length; i++) {
-                    result.push({ ID: rows[i].ID, CATID: rows[i].CATID, CATNAME: rows[i].CATNAME, PARENTCATIDC: rows[i].PARENTCATIDC, TAAKID: rows[i].TAAKID, PARENTCATIDT: rows[i].PARENTCATIDT, TITEL: rows[i].TITEL, STARTDAT: rows[i].STARTDAT, EINDDAT: rows[i].EINDDAT, TAAKOMSCHR: rows[i].TAAKOMSCHR });
+                    result.push({ ID: rows[i].ID, CATID: rows[i].CATID, CATNAME: rows[i].CATNAME, PARENTCATIDC: rows[i].PARENTCATIDC, TAAKID: rows[i].TAAKID, PARENTCATIDT: rows[i].PARENTCATIDT, TITEL: rows[i].TITEL, TAAKOMSCHR: rows[i].TAAKOMSCHR });
                 }
                 res.send({ status: 200, result: result });
             }
@@ -163,7 +161,7 @@ app.post('/delTaak', function (req, res) {
 
 app.post('/delCat', function (req, res) {
     var identifier = req.body.idC;
-    var identifiers = [req.body.idC, req.body.idC];
+    var identifiers = [req.body.idC,req.body.idC];
     var connection = maakConnectie();
     connection.query(
         "DELETE FROM TAAK WHERE PARENTCATIDT= ?;", identifier,
@@ -174,7 +172,7 @@ app.post('/delCat', function (req, res) {
                     function (err, rows, fields) {
                         if (!err) {
                             var result = JSON.stringify(rows);
-                            res.send({ status: 200, message: "categorie verwijderd" });
+                            res.send({status: 200, message: "categorie verwijderd"});
                         }
                         else {
                             console.log('Error while performing query Cat.');
@@ -194,10 +192,10 @@ app.post('/delCat', function (req, res) {
 
 app.post('/UpdateTaak', function (req, res) {
     console.log(req.body.taakomschr);
-    var identifier = [req.body.taakname, req.body.taakomschr, req.body.startdatum, req.body.einddatum, req.body.idT];
+    var identifier = [req.body.taakname, req.body.taakomschr, req.body.idT];//TaakId.substring(1);
     var connection = maakConnectie();
     connection.query(
-        "UPDATE TAAK SET TITEL = ?,TAAKOMSCHR = ?, STARTDAT=?, EINDDAT=? WHERE TAAKID= ?;", identifier,
+        "UPDATE TAAK SET TITEL = ?,TAAKOMSCHR = ? WHERE TAAKID= ?;", identifier,
         function (err, rows, fields) {
             if (!err) {
                 var result = JSON.stringify(rows);

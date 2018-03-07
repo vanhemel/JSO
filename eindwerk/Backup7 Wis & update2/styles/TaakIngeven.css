@@ -1,0 +1,83 @@
+form {
+    border-radius: 5px;
+    padding: 5px 5px 5px 30px;
+}
+
+fieldset {
+    max-width: 400px;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: right;
+}
+
+legend {
+    background-color: #efefef;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    padding: 10px 20px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.opslCat {
+    visibility: hidden;
+}
+
+.opslTaak {
+    visibility: hidden;
+}
+
+.zichtbaar {
+    visibility: visible;
+}
+
+#takenLijst fieldset>fieldset {
+    cursor:pointer;
+    display: none;
+}
+#takenLijst fieldset {
+    border-top: none;
+    border-right: none;
+    border-left: 1px solid grey;
+    border-bottom: none;
+    padding:4px 12px;
+    text-align: left;
+    position: relative;
+    max-width:700px;
+}
+
+#takenLijst legend {
+    cursor: pointer;
+    margin-left: 18px;
+}
+
+#takenLijst legend:hover {
+    background-color: lightgray;
+}
+
+i{font-size: 14px;margin:-4px 0 0 8px;color:grey;}
+
+.edit {
+    background-color: grey;
+    color: beige;
+    border-radius: 8%;
+    position: absolute;
+    left: 8px;
+    top: 10px;
+    padding: 4px;
+    cursor: pointer;
+    font-size: 12px
+}
+
+.edit:hover {
+    background-color: rgba(100,100,100,0.4);
+    border:1px solid grey;
+}
+
+.edit button{margin:0 4px;}
+
+#wrapper{display: grid;grid-template-columns: auto auto;}
+@media screen and (max-width: 1023px) {
+    #wrapper{grid-template-columns: auto}
+}

@@ -62,7 +62,7 @@ app.post('/addCat', function (req, res) {
     if (req.body.catLijst1 != "Hoofdcategorie") {
         sqlStmt += "INSERT INTO subcategorie VALUES(LAST_INSERT_ID(),?);"
     }
-    else {
+    else{
         sqlStmt += "INSERT INTO subcategorie VALUES(LAST_INSERT_ID(),null);"
     }
 
@@ -163,7 +163,7 @@ app.post('/delTaak', function (req, res) {
 
 app.post('/delCat', function (req, res) {
     var identifier = req.body.idC;
-    var identifiers = [req.body.idC, req.body.idC];
+    var identifiers = [req.body.idC,req.body.idC];
     var connection = maakConnectie();
     connection.query(
         "DELETE FROM TAAK WHERE PARENTCATIDT= ?;", identifier,
@@ -174,7 +174,7 @@ app.post('/delCat', function (req, res) {
                     function (err, rows, fields) {
                         if (!err) {
                             var result = JSON.stringify(rows);
-                            res.send({ status: 200, message: "categorie verwijderd" });
+                            res.send({status: 200, message: "categorie verwijderd"});
                         }
                         else {
                             console.log('Error while performing query Cat.');
@@ -194,10 +194,10 @@ app.post('/delCat', function (req, res) {
 
 app.post('/UpdateTaak', function (req, res) {
     console.log(req.body.taakomschr);
-    var identifier = [req.body.taakname, req.body.taakomschr, req.body.startdatum, req.body.einddatum, req.body.idT];
+    var identifier = [req.body.taakname, req.body.taakomschr, req.body.idT];//TaakId.substring(1);
     var connection = maakConnectie();
     connection.query(
-        "UPDATE TAAK SET TITEL = ?,TAAKOMSCHR = ?, STARTDAT=?, EINDDAT=? WHERE TAAKID= ?;", identifier,
+        "UPDATE TAAK SET TITEL = ?,TAAKOMSCHR = ? WHERE TAAKID= ?;", identifier,
         function (err, rows, fields) {
             if (!err) {
                 var result = JSON.stringify(rows);
