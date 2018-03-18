@@ -193,7 +193,6 @@ app.post('/delCat', function (req, res) {
 });
 
 app.post('/UpdateTaak', function (req, res) {
-    console.log(req.body.taakomschr);
     var identifier = [req.body.taakname, req.body.taakomschr, req.body.startdatum, req.body.einddatum, req.body.idT];
     var connection = maakConnectie();
     connection.query(
